@@ -16,7 +16,21 @@ export default defineConfig(({ mode }) => {
   for (const [key, value] of Object.entries(fileEnv)) {
     if (process.env[key] === undefined) process.env[key] = value;
   }
+  // Lovable's build/preview pipeline expects the Cloudflare-module layout in
+  // dist/ (dist/server + dist/client). Outside the Lovable sandbox the build
+  // stays portable: Vercel auto-detects its own preset via NITRO_PRESET.
+  const isLovableSandbox =
+    process.env["LOVABLE_SANDBOX"] === "1" || !!process.env["DEV_SERVER__PROJECT_PATH"];
   const preset = process.env["NITRO_PRESET"];
+  const nitroOptions = isLovableSandbox
+    ? {
+        preset: "cloudflare-module",
+        output: { dir: "dist", serverDir: "dist/server", publicDir: "dist/client" },
+        cloudflare: { nodeCompat: true, deployConfig: true },
+      }
+    : preset
+      ? { preset }
+      : {};
   return {
   server: { host: "::", port: 8080, strictPort: true },
   preview: { host: "::", port: 8080 },
@@ -29,7 +43,7 @@ export default defineConfig(({ mode }) => {
     }),
     react(),
     ...(process.env["NODE_ENV"] === "production" || process.argv.includes("build")
-      ? [nitro(preset ? { preset } : {})]
+      ? [nitro(nitroOptions)]
       : []),
   ],
   };
