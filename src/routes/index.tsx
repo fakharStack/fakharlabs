@@ -2,7 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { ExpandableGrid, type ExpandableCard } from "@/components/site/ExpandableGrid";
+import { BentoBuild, type BentoItem } from "@/components/site/BentoBuild";
+import { ServiceList } from "@/components/site/ServiceList";
+import { EditorialRows } from "@/components/site/EditorialRows";
+import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Faq } from "@/components/site/Faq";
 import { services, whatWeBuild, whyChooseUs, processSteps } from "@/data/site";
@@ -29,34 +32,30 @@ export const Route = createFileRoute("/")({
   component: Page,
 });
 
-const serviceCards: ExpandableCard[] = services.map((s) => ({
-  id: s.slug,
-  title: s.name,
-  icon: s.icon,
-  intro: s.intro,
-  points: s.capabilities,
-  bestFor: s.bestFor,
-  ctaLabel: "Explore service",
-  ctaTo: s.to,
+/** Bento weights: the flagship build gets the hero tile, the rest vary. */
+const bentoSizes: BentoItem["size"][] = ["lg", "md", "sm", "sm", "md", "wide"];
+const buildTiles: BentoItem[] = whatWeBuild.map((item, i) => ({
+  ...item,
+  size: bentoSizes[i] ?? "md",
 }));
 
-const buildCards: ExpandableCard[] = whatWeBuild.map((i) => ({
-  ...i,
-  pointsLabel: "What's included",
-  ctaLabel: "Discuss your project",
-  ctaTo: "/contact",
-}));
-
-const whyCards: ExpandableCard[] = whyChooseUs.map((i) => ({
-  ...i,
-  pointsLabel: "Why it matters",
-}));
-
-const stepCards: ExpandableCard[] = processSteps.map((s, i) => ({
-  ...s,
-  index: String(i + 1).padStart(2, "0"),
-  pointsLabel: "In this step",
-}));
+const maintenance = [
+  {
+    icon: "shield_lock",
+    title: "Kept secure",
+    body: "Dependency updates, SSL, backups and uptime monitoring so nothing quietly breaks.",
+  },
+  {
+    icon: "speed",
+    title: "Kept fast",
+    body: "Core Web Vitals watched after launch, with image and script budgets held in place.",
+  },
+  {
+    icon: "edit_note",
+    title: "Kept current",
+    body: "Content edits, new sections and small features handled inside a monthly window.",
+  },
+];
 
 const pricingPreview = [
   { name: "Starter", price: "PKR 530,000", blurb: "Up to 5 custom pages, launch ready." },
@@ -150,9 +149,9 @@ function Page() {
           <SectionHeading
             eyebrow="What we build"
             title="Different goals need different websites."
-            intro="Select a card to see what each type of build includes and who it suits."
+            intro="Select a tile to see what each type of build includes and who it suits."
           />
-          <ExpandableGrid items={buildCards} />
+          <BentoBuild items={buildTiles} />
         </section>
 
         {/* SERVICES */}
@@ -161,9 +160,9 @@ function Page() {
             <SectionHeading
               eyebrow="Services"
               title="Everything needed to design, build and keep a website working."
-              intro="Six focused services. Expand any card for capabilities, fit and next steps."
+              intro="Six focused services. Choose one to see its capabilities, fit and next steps."
             />
-            <ExpandableGrid items={serviceCards} />
+            <ServiceList services={services} />
             <Reveal className="mt-10">
               <Link
                 to="/services"
@@ -182,7 +181,7 @@ function Page() {
             eyebrow="Why choose us"
             title="Decisions we make on every project — and why they matter to you."
           />
-          <ExpandableGrid items={whyCards} />
+          <EditorialRows items={whyChooseUs} />
         </section>
 
         {/* FEATURED WORK */}
@@ -239,9 +238,9 @@ function Page() {
           <SectionHeading
             eyebrow="Process"
             title="Seven steps, no surprises."
-            intro="Expand a step to see exactly what happens and what we need from you."
+            intro="A linear path from first conversation to post-launch support."
           />
-          <ExpandableGrid items={stepCards} />
+          <ProcessTimeline steps={processSteps} />
         </section>
 
         {/* PRICING PREVIEW */}
@@ -306,6 +305,52 @@ function Page() {
               We publish delivered scope rather than borrowed statistics: no invented testimonials,
               no unverifiable percentages. What you see on this site is what we actually build.
             </p>
+          </Reveal>
+        </section>
+
+        {/* MAINTENANCE */}
+        <section className="mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8 md:pb-24">
+          <Reveal>
+            <div className="glass-panel grid grid-cols-1 gap-8 rounded-3xl p-6 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-12">
+              <div className="min-w-0">
+                <p className="font-label-caps text-label-caps uppercase text-primary">After launch</p>
+                <h2 className="mt-3 font-headline-lg text-2xl leading-tight text-on-background sm:text-3xl">
+                  A website is a product, not a delivery.
+                </h2>
+                <p className="mt-4 font-body-md text-sm text-on-surface-variant sm:text-base">
+                  Optional monthly care keeps the site secure, fast and current — cancel any time, and the
+                  code stays yours either way.
+                </p>
+                <Link
+                  to="/pricing"
+                  search={{ service: "maintenance", currency: "PKR" }}
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 font-body-md font-bold text-primary hover:text-secondary"
+                >
+                  See maintenance plans
+                  <span aria-hidden="true" className="material-symbols-outlined text-base">
+                    arrow_forward
+                  </span>
+                </Link>
+              </div>
+              <ul className="grid min-w-0 gap-4 sm:grid-cols-3">
+                {maintenance.map((m) => (
+                  <li
+                    key={m.title}
+                    className="min-w-0 rounded-2xl bg-white/60 p-5 ring-1 ring-outline-variant/40"
+                  >
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary-fixed/60 text-primary">
+                      <span aria-hidden="true" className="material-symbols-outlined text-xl">
+                        {m.icon}
+                      </span>
+                    </span>
+                    <h3 className="mt-4 font-headline-md text-base font-bold text-on-background">
+                      {m.title}
+                    </h3>
+                    <p className="mt-2 font-body-md text-sm text-on-surface-variant">{m.body}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
         </section>
 

@@ -17,10 +17,20 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Any environment without IntersectionObserver (or with reduced motion)
+    // gets the content immediately — animation never gates visibility.
+    if (
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       el.classList.add("visible");
       return;
     }
+    // Arm the hidden state only now that JS is confirmed running.
+    el.classList.add("reveal-armed");
+    // Anything already in (or above) the viewport on mount is shown at once.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add("visible");
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {

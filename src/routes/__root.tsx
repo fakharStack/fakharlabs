@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Toaster } from "@/components/ui/sonner";
+import { InitialLoader, RouteProgress } from "@/components/site/AppLoading";
 
 import appCss from "../styles.css?url";
 import { SiteLayout, ScreenContent } from "@/components/SiteLayout";
@@ -100,6 +101,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Without JS the loader can never be removed, so hide it outright.
+            Using <noscript> (not a runtime attribute) keeps SSR and client
+            markup identical, so hydration stays clean. */}
+        <noscript
+          dangerouslySetInnerHTML={{ __html: "<style>.app-loader{display:none!important}</style>" }}
+        />
       </head>
       <body>
         {children}
@@ -130,6 +137,8 @@ function RootComponent() {
     <ClerkProvider publishableKey={clerkKey}>
       <QueryClientProvider client={queryClient}>
         <Toaster />
+        <InitialLoader />
+        <RouteProgress />
         <Outlet />
       </QueryClientProvider>
     </ClerkProvider>
