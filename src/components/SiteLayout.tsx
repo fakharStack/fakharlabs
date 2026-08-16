@@ -24,6 +24,7 @@ function TopNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -45,15 +46,21 @@ function TopNav() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    const onPointerDown = (e: PointerEvent) => {
+      if (!navRef.current?.contains(e.target as Node)) setOpen(false);
+    };
     window.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
     return () => {
       document.body.style.overflow = previous;
       window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
     };
   }, [open]);
 
   return (
     <nav
+      ref={navRef}
       aria-label="Main"
       className={`fixed top-0 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-container-max -translate-x-1/2 rounded-2xl glass-panel glass-nav transition-all duration-300 sm:w-[calc(100%-3rem)] md:w-[92%] md:rounded-full ${
         scrolled ? "mt-2 shadow-[0_10px_40px_-12px_rgba(99,14,212,0.25)] md:mt-3" : "mt-3 soft-shadow md:mt-6"
@@ -69,7 +76,7 @@ function TopNav() {
           </span>
           <span className="whitespace-nowrap">Fakhar Labs</span>
         </Link>
-        <div className="hidden items-center gap-4 font-body-md text-[14px] font-medium tracking-tight lg:flex xl:gap-7 xl:text-[15px]">
+        <div className="hidden items-center gap-3 font-body-md text-[13.5px] font-medium tracking-tight lg:flex lg:gap-4 xl:gap-7 xl:text-[15px]">
           {navLinks.map((l) =>
             l.to === "/services" ? (
               <div key={l.to} className="group relative">
@@ -110,12 +117,17 @@ function TopNav() {
             ),
           )}
         </div>
-        <Link
-          to="/contact"
-          className="btn-primary hidden shrink-0 whitespace-nowrap !px-5 !py-2 text-sm lg:inline-flex xl:!px-6 xl:text-base"
-        >
-          Get Started
-        </Link>
+        {/* Wrapper owns the responsive visibility: .btn-primary declares
+            display:inline-flex in styles.css, which would otherwise win over
+            Tailwind's `hidden` and leak the CTA onto small screens. */}
+        <span className="hidden shrink-0 lg:block">
+          <Link
+            to="/contact"
+            className="btn-primary whitespace-nowrap !px-5 !py-2 text-sm xl:!px-6 xl:text-base"
+          >
+            Get Started
+          </Link>
+        </span>
         <button
           type="button"
           aria-expanded={open}
@@ -315,6 +327,8 @@ export function ScreenContent({ html }: { html: string }) {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const els = Array.from(root.querySelectorAll<HTMLElement>(".scroll-reveal"));
+    // Arm the hidden state only after JS is confirmed running (see styles.css).
+    els.forEach((el) => el.classList.add("reveal-armed"));
     if (reduceMotion) {
       els.forEach((el) => el.classList.add("visible"));
       return;
