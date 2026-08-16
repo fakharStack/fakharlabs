@@ -10,33 +10,387 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesLandingPagesRouteImport } from './routes/services.landing-pages'
+import { Route as ServicesSeoPerformanceRouteImport } from './routes/services.seo-performance'
+import { Route as ServicesWebDesignRouteImport } from './routes/services.web-design'
+import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
+import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
+import { Route as WorkDentalClinicRouteImport } from './routes/work.dental-clinic'
+import { Route as AdminClientsIndexRouteImport } from './routes/admin.clients.index'
+import { Route as AdminClientsClientIdRouteImport } from './routes/admin.clients.$clientId'
+import { Route as AdminLeadsIndexRouteImport } from './routes/admin.leads.index'
+import { Route as AdminLeadsLeadIdRouteImport } from './routes/admin.leads.$leadId'
+import { Route as AdminProjectsIndexRouteImport } from './routes/admin.projects.index'
+import { Route as AdminProjectsProjectIdRouteImport } from './routes/admin.projects.$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/admin/notifications',
+  path: '/admin/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesLandingPagesRoute = ServicesLandingPagesRouteImport.update({
+  id: '/services/landing-pages',
+  path: '/services/landing-pages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSeoPerformanceRoute = ServicesSeoPerformanceRouteImport.update({
+  id: '/services/seo-performance',
+  path: '/services/seo-performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWebDesignRoute = ServicesWebDesignRouteImport.update({
+  id: '/services/web-design',
+  path: '/services/web-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWebDevelopmentRoute = ServicesWebDevelopmentRouteImport.update({
+  id: '/services/web-development',
+  path: '/services/web-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWebsiteRedesignRoute = ServicesWebsiteRedesignRouteImport.update({
+  id: '/services/website-redesign',
+  path: '/services/website-redesign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkDentalClinicRoute = WorkDentalClinicRouteImport.update({
+  id: '/dental-clinic',
+  path: '/dental-clinic',
+  getParentRoute: () => WorkRoute,
+} as any)
+const AdminClientsIndexRoute = AdminClientsIndexRouteImport.update({
+  id: '/admin/clients/',
+  path: '/admin/clients/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminClientsClientIdRoute = AdminClientsClientIdRouteImport.update({
+  id: '/admin/clients/$clientId',
+  path: '/admin/clients/$clientId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLeadsIndexRoute = AdminLeadsIndexRouteImport.update({
+  id: '/admin/leads/',
+  path: '/admin/leads/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLeadsLeadIdRoute = AdminLeadsLeadIdRouteImport.update({
+  id: '/admin/leads/$leadId',
+  path: '/admin/leads/$leadId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectsIndexRoute = AdminProjectsIndexRouteImport.update({
+  id: '/admin/projects/',
+  path: '/admin/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectsProjectIdRoute = AdminProjectsProjectIdRouteImport.update({
+  id: '/admin/projects/$projectId',
+  path: '/admin/projects/$projectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/terms': typeof TermsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/services/landing-pages': typeof ServicesLandingPagesRoute
+  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
+  '/work/dental-clinic': typeof WorkDentalClinicRoute
+  '/admin/': typeof AdminIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/admin/clients/$clientId': typeof AdminClientsClientIdRoute
+  '/admin/leads/$leadId': typeof AdminLeadsLeadIdRoute
+  '/admin/projects/$projectId': typeof AdminProjectsProjectIdRoute
+  '/admin/clients/': typeof AdminClientsIndexRoute
+  '/admin/leads/': typeof AdminLeadsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/terms': typeof TermsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/services/landing-pages': typeof ServicesLandingPagesRoute
+  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
+  '/work/dental-clinic': typeof WorkDentalClinicRoute
+  '/admin': typeof AdminIndexRoute
+  '/services': typeof ServicesIndexRoute
+  '/admin/clients/$clientId': typeof AdminClientsClientIdRoute
+  '/admin/leads/$leadId': typeof AdminLeadsLeadIdRoute
+  '/admin/projects/$projectId': typeof AdminProjectsProjectIdRoute
+  '/admin/clients': typeof AdminClientsIndexRoute
+  '/admin/leads': typeof AdminLeadsIndexRoute
+  '/admin/projects': typeof AdminProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/terms': typeof TermsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/services/landing-pages': typeof ServicesLandingPagesRoute
+  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
+  '/work/dental-clinic': typeof WorkDentalClinicRoute
+  '/admin/': typeof AdminIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/admin/clients/$clientId': typeof AdminClientsClientIdRoute
+  '/admin/leads/$leadId': typeof AdminLeadsLeadIdRoute
+  '/admin/projects/$projectId': typeof AdminProjectsProjectIdRoute
+  '/admin/clients/': typeof AdminClientsIndexRoute
+  '/admin/leads/': typeof AdminLeadsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/case-studies'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/process'
+    | '/terms'
+    | '/thank-you'
+    | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/settings'
+    | '/services/landing-pages'
+    | '/services/seo-performance'
+    | '/services/web-design'
+    | '/services/web-development'
+    | '/services/website-redesign'
+    | '/work/dental-clinic'
+    | '/admin/'
+    | '/services/'
+    | '/admin/clients/$clientId'
+    | '/admin/leads/$leadId'
+    | '/admin/projects/$projectId'
+    | '/admin/clients/'
+    | '/admin/leads/'
+    | '/admin/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/case-studies'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/process'
+    | '/terms'
+    | '/thank-you'
+    | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/settings'
+    | '/services/landing-pages'
+    | '/services/seo-performance'
+    | '/services/web-design'
+    | '/services/web-development'
+    | '/services/website-redesign'
+    | '/work/dental-clinic'
+    | '/admin'
+    | '/services'
+    | '/admin/clients/$clientId'
+    | '/admin/leads/$leadId'
+    | '/admin/projects/$projectId'
+    | '/admin/clients'
+    | '/admin/leads'
+    | '/admin/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/case-studies'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/process'
+    | '/terms'
+    | '/thank-you'
+    | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/settings'
+    | '/services/landing-pages'
+    | '/services/seo-performance'
+    | '/services/web-design'
+    | '/services/web-development'
+    | '/services/website-redesign'
+    | '/work/dental-clinic'
+    | '/admin/'
+    | '/services/'
+    | '/admin/clients/$clientId'
+    | '/admin/leads/$leadId'
+    | '/admin/projects/$projectId'
+    | '/admin/clients/'
+    | '/admin/leads/'
+    | '/admin/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
+  ContactRoute: typeof ContactRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProcessRoute: typeof ProcessRoute
+  TermsRoute: typeof TermsRoute
+  ThankYouRoute: typeof ThankYouRoute
+  WorkRoute: typeof WorkRouteWithChildren
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  ServicesLandingPagesRoute: typeof ServicesLandingPagesRoute
+  ServicesSeoPerformanceRoute: typeof ServicesSeoPerformanceRoute
+  ServicesWebDesignRoute: typeof ServicesWebDesignRoute
+  ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
+  ServicesWebsiteRedesignRoute: typeof ServicesWebsiteRedesignRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+  AdminClientsClientIdRoute: typeof AdminClientsClientIdRoute
+  AdminLeadsLeadIdRoute: typeof AdminLeadsLeadIdRoute
+  AdminProjectsProjectIdRoute: typeof AdminProjectsProjectIdRoute
+  AdminClientsIndexRoute: typeof AdminClientsIndexRoute
+  AdminLeadsIndexRoute: typeof AdminLeadsIndexRoute
+  AdminProjectsIndexRoute: typeof AdminProjectsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +402,236 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/admin/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/landing-pages': {
+      id: '/services/landing-pages'
+      path: '/services/landing-pages'
+      fullPath: '/services/landing-pages'
+      preLoaderRoute: typeof ServicesLandingPagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/seo-performance': {
+      id: '/services/seo-performance'
+      path: '/services/seo-performance'
+      fullPath: '/services/seo-performance'
+      preLoaderRoute: typeof ServicesSeoPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/web-design': {
+      id: '/services/web-design'
+      path: '/services/web-design'
+      fullPath: '/services/web-design'
+      preLoaderRoute: typeof ServicesWebDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/web-development': {
+      id: '/services/web-development'
+      path: '/services/web-development'
+      fullPath: '/services/web-development'
+      preLoaderRoute: typeof ServicesWebDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/website-redesign': {
+      id: '/services/website-redesign'
+      path: '/services/website-redesign'
+      fullPath: '/services/website-redesign'
+      preLoaderRoute: typeof ServicesWebsiteRedesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/dental-clinic': {
+      id: '/work/dental-clinic'
+      path: '/dental-clinic'
+      fullPath: '/work/dental-clinic'
+      preLoaderRoute: typeof WorkDentalClinicRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/admin/clients/': {
+      id: '/admin/clients/'
+      path: '/admin/clients'
+      fullPath: '/admin/clients/'
+      preLoaderRoute: typeof AdminClientsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/clients/$clientId': {
+      id: '/admin/clients/$clientId'
+      path: '/admin/clients/$clientId'
+      fullPath: '/admin/clients/$clientId'
+      preLoaderRoute: typeof AdminClientsClientIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads/': {
+      id: '/admin/leads/'
+      path: '/admin/leads'
+      fullPath: '/admin/leads/'
+      preLoaderRoute: typeof AdminLeadsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads/$leadId': {
+      id: '/admin/leads/$leadId'
+      path: '/admin/leads/$leadId'
+      fullPath: '/admin/leads/$leadId'
+      preLoaderRoute: typeof AdminLeadsLeadIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/': {
+      id: '/admin/projects/'
+      path: '/admin/projects'
+      fullPath: '/admin/projects/'
+      preLoaderRoute: typeof AdminProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/$projectId': {
+      id: '/admin/projects/$projectId'
+      path: '/admin/projects/$projectId'
+      fullPath: '/admin/projects/$projectId'
+      preLoaderRoute: typeof AdminProjectsProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface WorkRouteChildren {
+  WorkDentalClinicRoute: typeof WorkDentalClinicRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkDentalClinicRoute: WorkDentalClinicRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
+  ContactRoute: ContactRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProcessRoute: ProcessRoute,
+  TermsRoute: TermsRoute,
+  ThankYouRoute: ThankYouRoute,
+  WorkRoute: WorkRouteWithChildren,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  ServicesLandingPagesRoute: ServicesLandingPagesRoute,
+  ServicesSeoPerformanceRoute: ServicesSeoPerformanceRoute,
+  ServicesWebDesignRoute: ServicesWebDesignRoute,
+  ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
+  ServicesWebsiteRedesignRoute: ServicesWebsiteRedesignRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+  AdminClientsClientIdRoute: AdminClientsClientIdRoute,
+  AdminLeadsLeadIdRoute: AdminLeadsLeadIdRoute,
+  AdminProjectsProjectIdRoute: AdminProjectsProjectIdRoute,
+  AdminClientsIndexRoute: AdminClientsIndexRoute,
+  AdminLeadsIndexRoute: AdminLeadsIndexRoute,
+  AdminProjectsIndexRoute: AdminProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
