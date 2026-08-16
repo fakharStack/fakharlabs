@@ -1,15 +1,36 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
-//     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
-//     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsConfigPaths from "vite-tsconfig-paths";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-  },
+// Portable build config — no Lovable packages required.
+// Deploy target is controlled by NITRO_PRESET (Vercel sets this automatically
+// via auto-detection; you can force it with NITRO_PRESET=vercel).
+export default defineConfig(({ mode }) => {
+  // Vite only exposes VITE_* to the client. Server functions read process.env,
+  // which Vite does not populate — so load .env into process.env for local dev.
+  // On Vercel the platform provides the real environment variables instead.
+  const fileEnv = loadEnv(mode, process.cwd(), "");
+  for (const [key, value] of Object.entries(fileEnv)) {
+    if (process.env[key] === undefined) process.env[key] = value;
+  }
+  const preset = process.env["NITRO_PRESET"];
+  return {
+  server: { host: "::", port: 8080, strictPort: true },
+  preview: { host: "::", port: 8080 },
+  plugins: [
+    tsConfigPaths(),
+    tailwindcss(),
+    tanstackStart({
+      // Route the server entry through src/server.ts (SSR error wrapper).
+      server: { entry: "server" },
+    }),
+    react(),
+    ...(process.env["NODE_ENV"] === "production" || process.argv.includes("build")
+      ? [nitro(preset ? { preset } : {})]
+      : []),
+  ],
+  };
 });
