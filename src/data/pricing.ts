@@ -562,6 +562,16 @@ export type ResolvedPrice = {
   cadenceLabel: string;
 };
 
+/**
+ * Example budget bands per market, used as the contact form's placeholder so the
+ * hint matches the currency the visitor was browsing.
+ */
+export const budgetExamples: Record<CurrencyCode, string> = {
+  PKR: "e.g. PKR 30,000 – PKR 75,000",
+  USD: "e.g. $400 – $1,000",
+  GBP: "e.g. £320 – £800",
+};
+
 /** Resolves a plan's price for a currency, applying the launch offer where it applies. */
 export function resolvePrice(plan: Plan, currency: CurrencyCode): ResolvedPrice {
   const cadenceLabel = plan.cadence === "month" ? "per month" : "one-off project";
