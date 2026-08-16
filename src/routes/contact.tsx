@@ -43,7 +43,12 @@ export const Route = createFileRoute("/contact")({
 
 function Page() {
   const search = Route.useSearch();
-  const currency = search.currency ?? "PKR";
+  const stored = useStoredCurrency();
+  const currency = search.currency ?? stored ?? "PKR";
+
+  useEffect(() => {
+    if (search.currency) storeCurrency(search.currency);
+  }, [search.currency]);
 
   return (
     <SiteLayout>
@@ -107,10 +112,11 @@ function Page() {
             <div className="min-w-0 lg:col-span-7">
               <Reveal delay={60}>
                 <ContactForm
+                  key={currency}
                   context={{
                     ...(search.service ? { service: search.service } : {}),
                     ...(search.plan ? { plan: search.plan } : {}),
-                    ...(search.currency ? { currency: search.currency } : {}),
+                    currency,
                   }}
                 />
               </Reveal>
