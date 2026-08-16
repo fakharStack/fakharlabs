@@ -3,6 +3,7 @@ import { z } from "zod";
 import { supabase } from "@/lib/supabase";
 import { WhatsAppIconButton } from "@/components/site/WhatsAppButton";
 import {
+  budgetExamples,
   currencyMeta,
   services as pricingServices,
   type CurrencyCode,
