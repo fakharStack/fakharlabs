@@ -19,6 +19,7 @@ import {
   type Service,
   type ServiceId,
 } from "@/data/pricing";
+import { readStoredCurrency, storeCurrency } from "@/hooks/useCurrencyPreference";
 
 export const Route = createFileRoute("/pricing")({
   validateSearch: (
@@ -59,6 +60,19 @@ function Page() {
       replace: true,
       resetScroll: false,
     });
+
+  // Restore the visitor's last currency when the URL doesn't pin one.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const pinned = new URLSearchParams(window.location.search).has("currency");
+    const stored = readStoredCurrency();
+    if (!pinned && stored && stored !== currency) select({ currency: stored });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    storeCurrency(currency);
+  }, [currency]);
 
   return (
     <SiteLayout>
