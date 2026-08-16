@@ -117,12 +117,17 @@ function TopNav() {
             ),
           )}
         </div>
-        <Link
-          to="/contact"
-          className="btn-primary hidden shrink-0 whitespace-nowrap !px-5 !py-2 text-sm lg:inline-flex xl:!px-6 xl:text-base"
-        >
-          Get Started
-        </Link>
+        {/* Wrapper owns the responsive visibility: .btn-primary declares
+            display:inline-flex in styles.css, which would otherwise win over
+            Tailwind's `hidden` and leak the CTA onto small screens. */}
+        <span className="hidden shrink-0 lg:block">
+          <Link
+            to="/contact"
+            className="btn-primary whitespace-nowrap !px-5 !py-2 text-sm xl:!px-6 xl:text-base"
+          >
+            Get Started
+          </Link>
+        </span>
         <button
           type="button"
           aria-expanded={open}
