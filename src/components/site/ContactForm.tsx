@@ -286,7 +286,7 @@ export function ContactForm({ context }: { context: ContactContext }) {
               id="budget"
               name="budget"
               type="text"
-              placeholder="e.g. 50,000 PKR or $800"
+              placeholder={budgetExamples[values.currency]}
               value={values.budget}
               onChange={(e) => set("budget", e.target.value)}
               className={fieldClass}
