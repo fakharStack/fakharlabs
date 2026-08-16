@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Reveal } from "@/components/site/Reveal";
@@ -12,6 +13,7 @@ import {
   type PlanId,
   type ServiceId,
 } from "@/data/pricing";
+import { storeCurrency, useStoredCurrency } from "@/hooks/useCurrencyPreference";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (
