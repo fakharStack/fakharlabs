@@ -71,9 +71,14 @@ function TopNav() {
           to="/"
           className="flex min-w-0 shrink-0 items-center gap-2 font-headline-md text-lg font-extrabold tracking-tighter text-on-background transition-all hover:scale-[1.02] active:scale-95 sm:text-xl xl:text-2xl"
         >
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-black text-white">
-            F
-          </span>
+          <img
+            src="/logo.png"
+            alt="Fakhar Labs"
+            width={32}
+            height={32}
+            className="h-8 w-8 shrink-0 rounded-full object-contain"
+            decoding="async"
+          />
           <span className="whitespace-nowrap">Fakhar Labs</span>
         </Link>
         <div className="hidden items-center gap-3 font-body-md text-[13.5px] font-medium tracking-tight lg:flex lg:gap-4 xl:gap-7 xl:text-[15px]">
@@ -193,7 +198,15 @@ function SiteFooter() {
     <footer className="w-full border-t border-white/5 bg-on-background pt-24 pb-gutter md:pt-section-gap">
       <div className="mx-auto grid w-full max-w-container-max grid-cols-12 gap-x-4 gap-y-8 px-margin-mobile md:gap-gutter md:px-margin-desktop [&>*]:min-w-0">
         <div className="col-span-12 mb-12 md:col-span-4 md:mb-0">
-          <div className="mb-4 font-headline-md text-headline-md font-extrabold text-surface-container-lowest">
+          <div className="mb-4 flex items-center gap-2 font-headline-md text-headline-md font-extrabold text-surface-container-lowest">
+            <img
+              src="/logo.png"
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-full object-contain"
+              decoding="async"
+            />
             Fakhar Labs
           </div>
           <p className="mb-6 max-w-sm font-body-md text-body-md text-surface-variant/80">
@@ -201,11 +214,11 @@ function SiteFooter() {
             conversion.
           </p>
           <a
-            href="mailto:hello@fakharlabs.com"
+            href="mailto:fakharlabs@gmail.com"
             className="inline-flex items-center gap-2 font-body-md text-body-md text-primary-fixed transition-colors hover:text-surface-container-lowest"
           >
             <span className="material-symbols-outlined text-base">mail</span>
-            hello@fakharlabs.com
+            fakharlabs@gmail.com
           </a>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             {["public", "photo_camera", "share"].map((icon) => (

@@ -77,10 +77,10 @@ function Page() {
                     <div>
                       <h2 className="font-body-md text-sm text-outline">Direct enquiries</h2>
                       <a
-                        href="mailto:hello@fakharlabs.com"
+                        href="mailto:fakharlabs@gmail.com"
                         className="font-headline-md text-lg text-on-background transition-colors hover:text-primary sm:text-xl"
                       >
-                        hello@fakharlabs.com
+                        fakharlabs@gmail.com
                       </a>
                     </div>
                     <div>

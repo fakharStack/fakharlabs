@@ -20,7 +20,7 @@ export const html = `
 <div class="space-y-6">
 <div>
 <h3 class="font-body-md text-body-md text-outline mb-1">Direct Inquiries</h3>
-<a class="font-headline-md text-headline-md text-on-background hover:text-primary transition-colors" href="mailto:hello@fakharlabs.com">hello@fakharlabs.com</a>
+                      <a class="font-headline-md text-headline-md text-on-background hover:text-primary transition-colors" href="mailto:fakharlabs@gmail.com">fakharlabs@gmail.com</a>
 </div>
 <div>
 <h3 class="font-body-md text-body-md text-outline mb-1">Response Time</h3>
