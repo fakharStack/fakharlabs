@@ -57,10 +57,55 @@ const maintenance = [
   },
 ];
 
+// const pricingPreview = [
+//   { name: "Starter", price: "PKR 530,000", blurb: "Up to 5 custom pages, launch ready." },
+//   { name: "Business", price: "PKR 1,250,000", blurb: "Up to 12 pages, CMS and integrations.", popular: true },
+//   { name: "Premium", price: "PKR 2,500,000+", blurb: "Custom platforms, portals and app logic." },
+// ];
+
 const pricingPreview = [
-  { name: "Starter", price: "PKR 530,000", blurb: "Up to 5 custom pages, launch ready." },
-  { name: "Business", price: "PKR 1,250,000", blurb: "Up to 12 pages, CMS and integrations.", popular: true },
-  { name: "Premium", price: "PKR 2,500,000+", blurb: "Custom platforms, portals and app logic." },
+  {
+    name: "Basic",
+    badge: "Recommended",
+    label: "Get online properly",
+    price: "PKR 30,000",
+    description: "A clean, professional website for a new or small business.",
+    timeline: "2–3 weeks",
+    features: [
+      "Up to 4 pages",
+      "Mobile-first responsive build",
+      "SEO foundations",
+    ],
+  },
+  {
+    name: "Professional",
+    badge: "Most chosen",
+    label: "Launch offer — 15% off",
+    price: "PKR 38,250",
+    oldPrice: "PKR 45,000",
+    description: "A polished business website built to support growth.",
+    timeline: "3–5 weeks",
+    popular: true,
+    features: [
+      "Up to 8 pages",
+      "Custom UI/UX",
+      "Performance optimisation",
+    ],
+  },
+  {
+    name: "Business",
+    badge: "Most complete",
+    label: "Launch offer — 15% off",
+    price: "PKR 63,750",
+    oldPrice: "PKR 75,000",
+    description: "A larger website with advanced features and integrations.",
+    timeline: "5–8 weeks",
+    features: [
+      "Up to 15 pages",
+      "CMS & integrations",
+      "Advanced SEO",
+    ],
+  },
 ];
 
 const industries = [
@@ -70,6 +115,9 @@ const industries = [
   { label: "Retail & E-commerce", icon: "shopping_bag" },
   { label: "Trades & Home Services", icon: "handyman" },
   { label: "Startups & Founders", icon: "rocket_launch" },
+  { label: "Local Businesses", icon: "business" },
+  { label: "Service Businesses", icon: "handyman" },
+  { label: "Small Businesses", icon: "storefront" },
 ];
 
 function Page() {
@@ -244,7 +292,7 @@ function Page() {
         </section>
 
         {/* PRICING PREVIEW */}
-        <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
+        {/* <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
           <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="Pricing"
@@ -278,38 +326,253 @@ function Page() {
               </Link>
             </Reveal>
           </div>
-        </section>
+        </section> */}
 
-        {/* WHO WE WORK WITH */}
-        <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 md:py-24">
-          <SectionHeading
-            eyebrow="Who we work with"
-            title="Small teams who need their website to do real work."
-          />
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            {industries.map((ind, i) => (
-              <Reveal key={ind.label} delay={i * 60}>
-                <div className="glass-card flex h-full items-center gap-3 rounded-2xl px-5 py-5 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="material-symbols-outlined shrink-0 text-2xl text-primary">
-                    {ind.icon}
-                  </span>
-                  <span className="min-w-0 font-body-md text-sm font-medium text-on-background sm:text-base">
-                    {ind.label}
+        <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
+  <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <SectionHeading
+      eyebrow="Pricing"
+      title="Simple packages. Clear starting points."
+      intro="Choose a starting package for your website. Visit the pricing page for complete package details."
+    />
+
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      {pricingPreview.map((p, i) => (
+        <Reveal key={p.name} delay={i * 80}>
+          <article className="page-enter h-full min-w-0">
+            <div
+              className={`glass-card relative flex h-full flex-col rounded-[1.5rem] border border-outline-variant/40 p-6 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl sm:p-8 ${
+                p.popular
+                  ? "plan-card-featured lg:-mt-4 lg:pb-10 hover:-translate-y-3"
+                  : p.name === "Business"
+                    ? "ring-1 ring-primary/25"
+                    : ""
+              }`}
+            >
+              {/* Badges */}
+              <div className="flex min-h-[34px] flex-wrap items-center gap-2">
+                <span
+                  className={`font-label-caps text-label-caps rounded-full px-3 py-1.5 uppercase ${
+                    p.popular
+                      ? "bg-primary text-on-primary"
+                      : "border border-primary/30 text-primary"
+                  }`}
+                >
+                  {p.badge}
+                </span>
+
+                <span className="font-label-caps text-label-caps rounded-full bg-secondary-container px-3 py-1.5 uppercase text-on-secondary-container">
+                  {p.label}
+                </span>
+              </div>
+
+              {/* Package name */}
+              <h3 className="mt-5 font-headline-md text-xl font-bold text-on-background sm:text-2xl">
+                {p.name}
+              </h3>
+
+              <p className="font-body-md text-xs uppercase tracking-widest text-primary">
+                {p.name === "Basic"
+                  ? "Get online properly"
+                  : p.name === "Professional"
+                    ? "Most chosen"
+                    : "Complete solution"}
+              </p>
+
+              <p className="mt-3 min-h-[48px] font-body-md text-sm text-on-surface-variant">
+                {p.description}
+              </p>
+
+              {/* Price */}
+              <div className="mt-6">
+                <p className="font-label-caps text-label-caps uppercase text-on-surface-variant">
+                  Starts from
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  {p.oldPrice && (
+                    <span className="font-body-md text-base text-on-surface-variant line-through">
+                      {p.oldPrice}
+                    </span>
+                  )}
+
+                  <span className="font-display-xl-mobile text-2xl font-extrabold text-primary sm:text-3xl">
+                    {p.price}
                   </span>
                 </div>
-              </Reveal>
-            ))}
+
+                <p className="mt-1 font-body-md text-sm text-on-surface-variant">
+                  One-off project
+                </p>
+
+                <p className="mt-2 inline-flex items-center gap-2 font-body-md text-xs text-on-surface-variant">
+                  <span
+                    aria-hidden="true"
+                    className="material-symbols-outlined text-sm text-primary"
+                  >
+                    schedule
+                  </span>
+                  {p.timeline}
+                </p>
+              </div>
+
+              {/* Key highlights */}
+              <ul className="mt-6 grow space-y-3 border-t border-outline-variant/50 pt-6">
+                {p.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary"
+                    >
+                      check_circle
+                    </span>
+
+                    <span className="min-w-0 font-body-md text-sm text-on-surface-variant">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <Link
+                to="/pricing"
+                search={{ service: "development", currency: "PKR" }}
+                className={`mt-6 min-h-12 w-full ${
+                  p.popular
+                    ? "btn-primary"
+                    : "btn-secondary text-on-surface"
+                } !py-3 font-body-md font-medium`}
+              >
+                View package
+              </Link>
+            </div>
+          </article>
+        </Reveal>
+      ))}
+    </div>
+
+    <Reveal className="mt-10 flex justify-center">
+      <Link
+        to="/pricing"
+        search={{ service: "development", currency: "PKR" }}
+        className="btn-primary min-h-12 !px-7 !py-3.5 font-body-md font-medium"
+      >
+        Compare all pricing
+      </Link>
+    </Reveal>
+  </div>
+</section>
+
+
+        {/* WHO WE WORK WITH */}
+        <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
+          {/* Heading */}
+          <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+            <SectionHeading
+              eyebrow="Who we work with"
+              title="Small teams who need their website to do real work."
+            />
           </div>
-          <Reveal className="mt-8">
-            <p className="max-w-2xl font-body-md text-sm text-on-surface-variant">
-              We publish delivered scope rather than borrowed statistics: no invented testimonials,
-              no unverifiable percentages. What you see on this site is what we actually build.
-            </p>
-          </Reveal>
+
+          {/* Full-width infinite carousel */}
+          <div className="relative mt-10 w-full overflow-hidden sm:mt-12">
+            {/* Edge fades */}
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-surface-container-low/60 to-transparent sm:w-16"
+              aria-hidden="true"
+            />
+
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-surface-container-low/60 to-transparent sm:w-16"
+              aria-hidden="true"
+            />
+
+            <div className="industries-marquee flex w-max">
+              {/* First set */}
+              <div className="flex shrink-0 items-center gap-2 pr-2 sm:gap-3 sm:pr-3">
+                {industries.map((ind) => (
+                  <div
+                    key={`first-${ind.label}`}
+                    className="flex shrink-0 items-center gap-2 rounded-full border border-outline-variant/50 bg-surface px-4 py-2.5 shadow-sm sm:gap-2.5 sm:px-5 sm:py-3"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="material-symbols-outlined text-base text-primary sm:text-lg"
+                    >
+                      {ind.icon}
+                    </span>
+
+                    <span className="whitespace-nowrap font-body-md text-xs font-medium text-on-background sm:text-sm">
+                      {ind.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Identical duplicate for seamless loop */}
+              <div
+                className="flex shrink-0 items-center gap-2 pr-2 sm:gap-3 sm:pr-3"
+                aria-hidden="true"
+              >
+                {industries.map((ind) => (
+                  <div
+                    key={`second-${ind.label}`}
+                    className="flex shrink-0 items-center gap-2 rounded-full border border-outline-variant/50 bg-surface px-4 py-2.5 shadow-sm sm:gap-2.5 sm:px-5 sm:py-3"
+                  >
+                    <span className="material-symbols-outlined text-base text-primary sm:text-lg">
+                      {ind.icon}
+                    </span>
+
+                    <span className="whitespace-nowrap font-body-md text-xs font-medium text-on-background sm:text-sm">
+                      {ind.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <style>{`
+      @keyframes industries-marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .industries-marquee {
+        animation: industries-marquee 32s linear infinite;
+      }
+
+      .industries-marquee:hover {
+        animation-play-state: paused;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .industries-marquee {
+          animation: none;
+        }
+      }
+    `}</style>
+          </div>
+
+          {/* Description */}
+          <div className="mx-auto mt-7 w-full max-w-6xl px-5 sm:px-8 sm:mt-8">
+            <Reveal>
+              <p className="max-w-2xl font-body-md text-sm leading-relaxed text-on-surface-variant">
+                We publish delivered scope rather than borrowed statistics: no invented
+                testimonials, no unverifiable percentages. What you see on this site
+                is what we actually build.
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         {/* MAINTENANCE */}
-        <section className="mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8 md:pb-24">
+        <section className="mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8 md:pb-24 mt-16">
           <Reveal>
             <div className="glass-panel grid grid-cols-1 gap-8 rounded-3xl p-6 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-12">
               <div className="min-w-0">

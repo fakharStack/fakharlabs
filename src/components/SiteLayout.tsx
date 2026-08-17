@@ -195,111 +195,163 @@ function TopNav() {
 
 function SiteFooter() {
   return (
-    <footer className="w-full border-t border-white/5 bg-on-background pt-24 pb-gutter md:pt-section-gap">
-      <div className="mx-auto grid w-full max-w-container-max grid-cols-12 gap-x-4 gap-y-8 px-margin-mobile md:gap-gutter md:px-margin-desktop [&>*]:min-w-0">
-        <div className="col-span-12 mb-12 md:col-span-4 md:mb-0">
-          <div className="mb-4 flex items-center gap-2 font-headline-md text-headline-md font-extrabold text-surface-container-lowest">
-            <img
-              src="/logo.png"
-              alt=""
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-full object-contain"
-              decoding="async"
-            />
-            Fakhar Labs
-          </div>
-          <p className="mb-6 max-w-sm font-body-md text-body-md text-surface-variant/80">
-            We craft high-performance digital experiences engineered for growth, speed and
-            conversion.
-          </p>
-          <a
-            href="mailto:fakharlabs@gmail.com"
-            className="inline-flex items-center gap-2 font-body-md text-body-md text-primary-fixed transition-colors hover:text-surface-container-lowest"
-          >
-            <span className="material-symbols-outlined text-base">mail</span>
-            fakharlabs@gmail.com
-          </a>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            {["public", "photo_camera", "share"].map((icon) => (
-              <span
-                key={icon}
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-surface-variant/70 transition-colors hover:border-primary-fixed/50 hover:text-primary-fixed"
-              >
-                <span aria-hidden="true" className="material-symbols-outlined text-lg">
-                  {icon}
-                </span>
-              </span>
-            ))}
-            <WhatsAppIconButton
-              tone="dark"
-              message="Hi Fakhar Labs — I'd like to discuss a project."
-            />
-          </div>
-        </div>
+    <footer className="w-full border-t border-white/5 bg-[#111827] pt-16 pb-6 md:pt-20">
+      <div className="mx-auto w-full max-w-container-max px-margin-mobile md:px-margin-desktop">
+        {/* Main footer */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8 lg:gap-12">
+          {/* Brand */}
+          <div className="md:col-span-3">
+            <Link
+              to="/"
+              className="group inline-flex items-center gap-3 transition-transform duration-300 hover:scale-[1.01]"
+            >
+              <img
+                src="/logo.png"
+                alt="Fakhar Labs"
+                width={36}
+                height={36}
+                className="h-9 w-9 shrink-0 rounded-full object-contain"
+                decoding="async"
+              />
 
-        <div className="col-span-6 md:col-span-2 md:col-start-6">
-          <h3 className="mb-4 font-label-caps text-label-caps uppercase tracking-widest text-surface-variant/50">
-            Studio
-          </h3>
-          <div className="flex flex-col gap-3">
-            {navLinks.map((l) => (
+              <span className="font-headline-md text-xl font-extrabold tracking-tight text-white">
+                Fakhar Labs
+              </span>
+            </Link>
+
+            <p className="mt-4 max-w-sm font-body-md text-sm leading-relaxed text-slate-300">
+              Fakhar Labs builds high-quality websites, web applications and
+              AI-powered digital products for businesses — engineered for
+              speed, clarity and growth.
+            </p>
+          </div>
+
+          {/* Services */}
+          <div className="md:col-span-2 md:col-start-4">
+            <h3 className="mb-5 font-label-caps text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Services
+            </h3>
+
+            <nav className="flex flex-col gap-3.5" aria-label="Footer services">
+              {serviceLinks.map((s) => (
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Resources */}
+          <div className="md:col-span-2">
+            <h3 className="mb-5 font-label-caps text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Resources
+            </h3>
+
+            <nav className="flex flex-col gap-3.5" aria-label="Footer resources">
               <Link
-                key={l.to}
-                to={l.to}
-                className="font-body-md text-body-md text-surface-variant/70 transition-all hover:text-primary-fixed"
+                to="/work"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
               >
-                {l.label}
+                Work
               </Link>
-            ))}
+              <Link
+                to="/process"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+              >
+                Process
+              </Link>
+            </nav>
+          </div>
+
+          {/* Company */}
+          <div className="md:col-span-2">
+            <h3 className="mb-5 font-label-caps text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Company
+            </h3>
+
+            <nav className="flex flex-col gap-3.5" aria-label="Footer company">
+              <Link
+                to="/about"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+              >
+                About
+              </Link>
+
+              <Link
+                to="/contact"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+              >
+                Contact
+              </Link>
+
+              <Link
+                to="/privacy"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+              >
+                Privacy Policy
+              </Link>
+
+              <Link
+                to="/terms"
+                className="w-fit font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+              >
+                Terms
+              </Link>
+            </nav>
+          </div>
+
+          {/* Contact */}
+          <div className="md:col-span-3">
+            <h3 className="mb-5 font-label-caps text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Contact
+            </h3>
+
+            <p className="max-w-xs font-body-md text-sm leading-relaxed text-slate-300">
+              Tell us what you're building — we'll reply within one business
+              day.
+            </p>
+
+            <a
+              href="mailto:fakharlabs@gmail.com"
+              className="mt-4 inline-flex items-center gap-2 font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
+            >
+              <span
+                aria-hidden="true"
+                className="material-symbols-outlined text-[18px]"
+              >
+                mail
+              </span>
+              fakharlabs@gmail.com
+            </a>
+
             <Link
               to="/contact"
-              className="font-body-md text-body-md text-surface-variant/70 transition-all hover:text-primary-fixed"
+              className="group mt-5 inline-flex min-h-10 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-5 py-2.5 font-body-md text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30"
             >
-              Contact
+              Get Started
+
+              <span
+                aria-hidden="true"
+                className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1"
+              >
+                arrow_forward
+              </span>
             </Link>
           </div>
         </div>
 
-        <div className="col-span-6 md:col-span-3">
-          <h3 className="mb-4 font-label-caps text-label-caps uppercase tracking-widest text-surface-variant/50">
-            Services
-          </h3>
-          <div className="flex flex-col gap-3">
-            {serviceLinks.map((s) => (
-              <Link
-                key={s.to}
-                to={s.to}
-                className="font-body-md text-body-md text-surface-variant/70 transition-all hover:text-primary-fixed"
-              >
-                {s.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="col-span-12 md:col-span-3">
-          <h3 className="mb-4 font-label-caps text-label-caps uppercase tracking-widest text-surface-variant/50">
-            Start a project
-          </h3>
-          <p className="mb-5 font-body-md text-body-md text-surface-variant/70">
-            Tell us what you're building — we'll reply within one business day.
+        {/* Bottom bar */}
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-5 md:mt-16 md:flex-row md:items-center md:justify-between">
+          <p className="font-body-md text-xs text-slate-400">
+            © {new Date().getFullYear()} Fakhar Labs. All rights reserved.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-3 font-medium text-white transition-transform hover:scale-[1.02]"
-          >
-            Let's Talk
-            <span className="material-symbols-outlined text-sm">arrow_forward</span>
-          </Link>
-        </div>
 
-        <div className="col-span-12 mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="font-body-md text-body-md text-surface-variant/60">
-            © 2024 Fakhar Labs. Excellence in Digital Craft.
-          </p>
-          <p className="font-body-md text-body-md text-surface-variant/40">
-            Designed & built in-house.
+          <p className="font-body-md text-xs text-slate-500">
+            Designed &amp; built in-house.
           </p>
         </div>
       </div>
