@@ -69,8 +69,8 @@ function Page() {
               <h2 className="font-headline-md text-lg font-bold text-on-background sm:text-xl">Contact</h2>
               <p className="mt-3 font-body-md text-sm text-on-surface-variant sm:text-base">
                 Questions about this policy? Email{" "}
-                <a className="text-primary underline" href="mailto:hello@fakharlabs.com">
-                  hello@fakharlabs.com
+                <a className="text-primary underline" href="mailto:fakharlabs@gmail.com">
+                  fakharlabs@gmail.com
                 </a>
                 .
               </p>
