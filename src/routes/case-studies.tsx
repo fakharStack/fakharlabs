@@ -98,63 +98,83 @@ function Page() {
                   </p>
 
                   <div className="mt-8 grid gap-7 border-t border-outline-variant/50 pt-8 md:grid-cols-2">
-                    <Block label="Project overview">{p.overview}</Block>
-                    <Block label="The challenge">{p.challenge}</Block>
-                    <Block label="Our approach">{p.approach}</Block>
-                    <Block label="Design direction">{p.design}</Block>
-                    <Block label="Development">{p.development}</Block>
-                    <Block label="Responsive experience">{p.responsive}</Block>
-                    <Block label="Performance & technical focus">{p.performance}</Block>
-                    <Block label="Key features">
-                      <ul className="space-y-2">
-                        {p.features.map((f) => (
-                          <li key={f} className="flex items-start gap-2">
-                            <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
-                              check_circle
-                            </span>
-                            <span className="min-w-0">{f}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </Block>
+                    {p.overview && <Block label="Project overview">{p.overview}</Block>}
+                    {p.challenge && <Block label="The challenge">{p.challenge}</Block>}
+                    {p.approach && <Block label="Our approach">{p.approach}</Block>}
+                    {p.design && <Block label="Design direction">{p.design}</Block>}
+                    {p.development && <Block label="Development">{p.development}</Block>}
+                    {p.responsive && <Block label="Responsive experience">{p.responsive}</Block>}
+                    {p.performance && <Block label="Performance & technical focus">{p.performance}</Block>}
+                    {p.features && p.features.length > 0 && (
+                      <Block label="Key features">
+                        <ul className="space-y-2">
+                          {p.features.map((f) => (
+                            <li key={f} className="flex items-start gap-2">
+                              <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
+                                check_circle
+                              </span>
+                              <span className="min-w-0">{f}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </Block>
+                    )}
                   </div>
 
                   <div className="mt-8 grid gap-7 border-t border-outline-variant/50 pt-8 md:grid-cols-2">
-                    <Block label="Outcome & deliverables">
-                      <ul className="space-y-2">
-                        {p.outcome.map((o) => (
-                          <li key={o} className="flex items-start gap-2">
-                            <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
-                              task_alt
-                            </span>
-                            <span className="min-w-0">{o}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </Block>
-                    <Block label="Technology stack">
-                      <ul className="flex flex-wrap gap-2">
-                        {p.stack.map((t) => (
-                          <li
-                            key={t}
-                            className="rounded-md bg-surface-container px-2.5 py-1 font-body-md text-xs text-on-surface-variant"
-                          >
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                    </Block>
+                    {p.outcome && p.outcome.length > 0 && (
+                      <Block label="Outcome & deliverables">
+                        <ul className="space-y-2">
+                          {p.outcome.map((o) => (
+                            <li key={o} className="flex items-start gap-2">
+                              <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
+                                task_alt
+                              </span>
+                              <span className="min-w-0">{o}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </Block>
+                    )}
+                    {p.stack && p.stack.length > 0 && (
+                      <Block label="Technology stack">
+                        <ul className="flex flex-wrap gap-2">
+                          {p.stack.map((t) => (
+                            <li
+                              key={t}
+                              className="rounded-md bg-surface-container px-2.5 py-1 font-body-md text-xs text-on-surface-variant"
+                            >
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </Block>
+                    )}
                   </div>
 
-                  {p.caseStudyTo && (
-                    <Link
-                      to={p.caseStudyTo}
-                      className="mt-8 inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary transition-colors hover:text-secondary sm:text-base"
-                    >
-                      Read the extended case study
-                      <span className="material-symbols-outlined text-base">arrow_forward</span>
-                    </Link>
-                  )}
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    {p.caseStudyTo && (
+                      <Link
+                        to={p.caseStudyTo}
+                        className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary transition-colors hover:text-secondary sm:text-base"
+                      >
+                        Read the extended case study
+                        <span className="material-symbols-outlined text-base">arrow_forward</span>
+                      </Link>
+                    )}
+                    
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary transition-colors hover:text-secondary sm:text-base"
+                      >
+                        Visit Live Project
+                        <span className="material-symbols-outlined text-base">open_in_new</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </Reveal>

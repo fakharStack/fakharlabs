@@ -34,7 +34,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Starting prices for website development, redesigns, landing pages, web apps, SEO and maintenance — in PKR, USD or GBP, with a clear 25% advance payment model.",
+          "Starting prices for website development, redesigns, landing pages, web apps and maintenance — in PKR, USD or GBP, with a clear 25% advance payment model.",
       },
       { property: "og:title", content: "Pricing — Fakhar Labs" },
       {

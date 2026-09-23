@@ -17,7 +17,7 @@ const serviceLinks = [
   { to: "/services/web-development", label: "Web Development", icon: "code" },
   { to: "/services/landing-pages", label: "Landing Pages", icon: "rocket_launch" },
   { to: "/services/website-redesign", label: "Website Redesign", icon: "autorenew" },
-  { to: "/services/seo-performance", label: "SEO & Performance", icon: "trending_up" },
+
 ] as const;
 
 function TopNav() {

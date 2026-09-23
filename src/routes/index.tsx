@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Fakhar Labs designs and builds custom, fast, mobile-first websites for businesses — development, redesign, landing pages, SEO and maintenance.",
+          "Fakhar Labs designs and builds custom, fast, mobile-first websites for businesses — development, redesign, landing pages and maintenance.",
       },
       { property: "og:title", content: "Fakhar Labs — Websites That Grow Businesses" },
       {
@@ -57,20 +57,14 @@ const maintenance = [
   },
 ];
 
-// const pricingPreview = [
-//   { name: "Starter", price: "PKR 530,000", blurb: "Up to 5 custom pages, launch ready." },
-//   { name: "Business", price: "PKR 1,250,000", blurb: "Up to 12 pages, CMS and integrations.", popular: true },
-//   { name: "Premium", price: "PKR 2,500,000+", blurb: "Custom platforms, portals and app logic." },
-// ];
-
 const pricingPreview = [
   {
     name: "Basic",
     badge: "Recommended",
     label: "Get online properly",
-    price: "PKR 30,000",
+    price: "PKR 6,999",
     description: "A clean, professional website for a new or small business.",
-    timeline: "2–3 weeks",
+    timeline: "1 week",
     features: [
       "Up to 4 pages",
       "Mobile-first responsive build",
@@ -81,10 +75,10 @@ const pricingPreview = [
     name: "Professional",
     badge: "Most chosen",
     label: "Launch offer — 15% off",
-    price: "PKR 38,250",
-    oldPrice: "PKR 45,000",
+    price: "PKR 13,175",
+    oldPrice: "PKR 15,500",
     description: "A polished business website built to support growth.",
-    timeline: "3–5 weeks",
+    timeline: "1 week",
     popular: true,
     features: [
       "Up to 8 pages",
@@ -96,10 +90,10 @@ const pricingPreview = [
     name: "Business",
     badge: "Most complete",
     label: "Launch offer — 15% off",
-    price: "PKR 63,750",
-    oldPrice: "PKR 75,000",
+    price: "PKR 21,250",
+    oldPrice: "PKR 25,000",
     description: "A larger website with advanced features and integrations.",
-    timeline: "5–8 weeks",
+    timeline: "1-2 weeks",
     features: [
       "Up to 15 pages",
       "CMS & integrations",
@@ -244,15 +238,16 @@ function Page() {
               {featured.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 80} as="article">
                   <div className="project-card-container group h-full">
-                    <div className="glass-card flex h-full flex-col overflow-hidden rounded-2xl">
-                      <div className="project-image-wrapper">
+                    <div className="glass-card flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-outline-variant/40 shadow-sm transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-xl">
+                      <div className="project-image-wrapper relative">
                         <SmartImage
                           src={p.image}
                           alt={`${p.name} website design mockup`}
                           width={1280}
                           height={960}
-                          wrapperClassName="aspect-[4/3] w-full"
+                          wrapperClassName="aspect-[4/3] w-full transition-all duration-500"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
                       </div>
                       <div className="flex grow flex-col p-6">
                         <span className="font-label-caps text-label-caps w-max rounded-full bg-primary-fixed/60 px-3 py-1 uppercase text-primary">
@@ -262,16 +257,29 @@ function Page() {
                           {p.name}
                         </h3>
                         <p className="mt-2 grow font-body-md text-sm text-on-surface-variant">{p.short}</p>
-                        <Link
-                          to="/case-studies"
-                          hash={p.slug}
-                          className="mt-5 inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary hover:text-secondary"
-                        >
-                          View case study
-                          <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">
-                            arrow_forward
-                          </span>
-                        </Link>
+                        <div className="mt-5 flex flex-wrap items-center gap-4">
+                          <Link
+                            to="/case-studies"
+                            hash={p.slug}
+                            className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary hover:text-secondary group"
+                          >
+                            View case study
+                            <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">
+                              arrow_forward
+                            </span>
+                          </Link>
+                          {p.url && (
+                            <a
+                              href={p.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-on-surface-variant hover:text-primary"
+                            >
+                              Live Project
+                              <span className="material-symbols-outlined text-base">open_in_new</span>
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -329,140 +337,137 @@ function Page() {
         </section> */}
 
         <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
-  <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-    <SectionHeading
-      eyebrow="Pricing"
-      title="Simple packages. Clear starting points."
-      intro="Choose a starting package for your website. Visit the pricing page for complete package details."
-    />
+          <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+            <SectionHeading
+              eyebrow="Pricing"
+              title="Simple packages. Clear starting points."
+              intro="Choose a starting package for your website. Visit the pricing page for complete package details."
+            />
 
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-      {pricingPreview.map((p, i) => (
-        <Reveal key={p.name} delay={i * 80}>
-          <article className="page-enter h-full min-w-0">
-            <div
-              className={`glass-card relative flex h-full flex-col rounded-[1.5rem] border border-outline-variant/40 p-6 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl sm:p-8 ${
-                p.popular
-                  ? "plan-card-featured lg:-mt-4 lg:pb-10 hover:-translate-y-3"
-                  : p.name === "Business"
-                    ? "ring-1 ring-primary/25"
-                    : ""
-              }`}
-            >
-              {/* Badges */}
-              <div className="flex min-h-[34px] flex-wrap items-center gap-2">
-                <span
-                  className={`font-label-caps text-label-caps rounded-full px-3 py-1.5 uppercase ${
-                    p.popular
-                      ? "bg-primary text-on-primary"
-                      : "border border-primary/30 text-primary"
-                  }`}
-                >
-                  {p.badge}
-                </span>
-
-                <span className="font-label-caps text-label-caps rounded-full bg-secondary-container px-3 py-1.5 uppercase text-on-secondary-container">
-                  {p.label}
-                </span>
-              </div>
-
-              {/* Package name */}
-              <h3 className="mt-5 font-headline-md text-xl font-bold text-on-background sm:text-2xl">
-                {p.name}
-              </h3>
-
-              <p className="font-body-md text-xs uppercase tracking-widest text-primary">
-                {p.name === "Basic"
-                  ? "Get online properly"
-                  : p.name === "Professional"
-                    ? "Most chosen"
-                    : "Complete solution"}
-              </p>
-
-              <p className="mt-3 min-h-[48px] font-body-md text-sm text-on-surface-variant">
-                {p.description}
-              </p>
-
-              {/* Price */}
-              <div className="mt-6">
-                <p className="font-label-caps text-label-caps uppercase text-on-surface-variant">
-                  Starts from
-                </p>
-
-                <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  {p.oldPrice && (
-                    <span className="font-body-md text-base text-on-surface-variant line-through">
-                      {p.oldPrice}
-                    </span>
-                  )}
-
-                  <span className="font-display-xl-mobile text-2xl font-extrabold text-primary sm:text-3xl">
-                    {p.price}
-                  </span>
-                </div>
-
-                <p className="mt-1 font-body-md text-sm text-on-surface-variant">
-                  One-off project
-                </p>
-
-                <p className="mt-2 inline-flex items-center gap-2 font-body-md text-xs text-on-surface-variant">
-                  <span
-                    aria-hidden="true"
-                    className="material-symbols-outlined text-sm text-primary"
-                  >
-                    schedule
-                  </span>
-                  {p.timeline}
-                </p>
-              </div>
-
-              {/* Key highlights */}
-              <ul className="mt-6 grow space-y-3 border-t border-outline-variant/50 pt-6">
-                {p.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <span
-                      aria-hidden="true"
-                      className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary"
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+              {pricingPreview.map((p, i) => (
+                <Reveal key={p.name} delay={i * 80}>
+                  <article className="page-enter h-full min-w-0">
+                    <div
+                      className={`glass-card relative flex h-full flex-col rounded-[1.5rem] border border-outline-variant/40 p-6 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl sm:p-8 ${p.popular
+                          ? "plan-card-featured lg:-mt-4 lg:pb-10 hover:-translate-y-3"
+                          : p.name === "Business"
+                            ? "ring-1 ring-primary/25"
+                            : ""
+                        }`}
                     >
-                      check_circle
-                    </span>
+                      {/* Badges */}
+                      <div className="flex min-h-[34px] flex-wrap items-center gap-2">
+                        <span
+                          className={`font-label-caps text-label-caps rounded-full px-3 py-1.5 uppercase ${p.popular
+                              ? "bg-primary text-on-primary"
+                              : "border border-primary/30 text-primary"
+                            }`}
+                        >
+                          {p.badge}
+                        </span>
 
-                    <span className="min-w-0 font-body-md text-sm text-on-surface-variant">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                        <span className="font-label-caps text-label-caps rounded-full bg-secondary-container px-3 py-1.5 uppercase text-on-secondary-container">
+                          {p.label}
+                        </span>
+                      </div>
 
-              {/* CTA */}
+                      {/* Package name */}
+                      <h3 className="mt-5 font-headline-md text-xl font-bold text-on-background sm:text-2xl">
+                        {p.name}
+                      </h3>
+
+                      <p className="font-body-md text-xs uppercase tracking-widest text-primary">
+                        {p.name === "Basic"
+                          ? "Get online properly"
+                          : p.name === "Professional"
+                            ? "Most chosen"
+                            : "Complete solution"}
+                      </p>
+
+                      <p className="mt-3 min-h-[48px] font-body-md text-sm text-on-surface-variant">
+                        {p.description}
+                      </p>
+
+                      {/* Price */}
+                      <div className="mt-6">
+                        <p className="font-label-caps text-label-caps uppercase text-on-surface-variant">
+                          Starts from
+                        </p>
+
+                        <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          {p.oldPrice && (
+                            <span className="font-body-md text-base text-on-surface-variant line-through">
+                              {p.oldPrice}
+                            </span>
+                          )}
+
+                          <span className="font-display-xl-mobile text-2xl font-extrabold text-primary sm:text-3xl">
+                            {p.price}
+                          </span>
+                        </div>
+
+                        <p className="mt-1 font-body-md text-sm text-on-surface-variant">
+                          One-off project
+                        </p>
+
+                        <p className="mt-2 inline-flex items-center gap-2 font-body-md text-xs text-on-surface-variant">
+                          <span
+                            aria-hidden="true"
+                            className="material-symbols-outlined text-sm text-primary"
+                          >
+                            schedule
+                          </span>
+                          {p.timeline}
+                        </p>
+                      </div>
+
+                      {/* Key highlights */}
+                      <ul className="mt-6 grow space-y-3 border-t border-outline-variant/50 pt-6">
+                        {p.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-3">
+                            <span
+                              aria-hidden="true"
+                              className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary"
+                            >
+                              check_circle
+                            </span>
+
+                            <span className="min-w-0 font-body-md text-sm text-on-surface-variant">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* CTA */}
+                      <Link
+                        to="/pricing"
+                        search={{ service: "development", currency: "PKR" }}
+                        className={`mt-6 min-h-12 w-full ${p.popular
+                            ? "btn-primary"
+                            : "btn-secondary text-on-surface"
+                          } !py-3 font-body-md font-medium`}
+                      >
+                        View package
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal className="mt-10 flex justify-center">
               <Link
                 to="/pricing"
                 search={{ service: "development", currency: "PKR" }}
-                className={`mt-6 min-h-12 w-full ${
-                  p.popular
-                    ? "btn-primary"
-                    : "btn-secondary text-on-surface"
-                } !py-3 font-body-md font-medium`}
+                className="btn-primary min-h-12 !px-7 !py-3.5 font-body-md font-medium"
               >
-                View package
+                Compare all pricing
               </Link>
-            </div>
-          </article>
-        </Reveal>
-      ))}
-    </div>
-
-    <Reveal className="mt-10 flex justify-center">
-      <Link
-        to="/pricing"
-        search={{ service: "development", currency: "PKR" }}
-        className="btn-primary min-h-12 !px-7 !py-3.5 font-body-md font-medium"
-      >
-        Compare all pricing
-      </Link>
-    </Reveal>
-  </div>
-</section>
+            </Reveal>
+          </div>
+        </section>
 
 
         {/* WHO WE WORK WITH */}

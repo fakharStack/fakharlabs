@@ -146,38 +146,7 @@ export const html = `
 </div>
 </div>
 </section>
-<!-- Service 05: SEO & Performance -->
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-<div class="md:col-span-5 relative order-2 md:order-1">
-<span class="absolute -top-16 -left-4 md:-top-24 md:-left-8 font-display-xl text-[120px] md:text-[180px] text-primary/5 leading-none font-bold z-0 pointer-events-none select-none">05</span>
-<div class="relative z-10 glass-panel rounded-3xl p-6 md:p-8 soft-shadow">
-<h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">SEO &amp; Performance</h2>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-                            We engineer websites that load instantly and rank higher. Through technical precision, we turn speed into a competitive advantage.
-                        </p>
-<ul class="space-y-3 mb-8">
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary mt-1 text-xl">check_circle</span>
-<span class="text-on-surface-variant">Technical SEO Audits</span>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary mt-1 text-xl">check_circle</span>
-<span class="text-on-surface-variant">Page Speed Optimization</span>
-</li>
-</ul>
-<a class="bg-surface-container-high text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-all inline-flex items-center gap-2" href="/services/seo-performance">
-                            Explore SEO <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="md:col-span-7 order-1 md:order-2">
-<div class="rounded-3xl overflow-hidden shadow-2xl h-[300px] md:h-[500px]">
-<img class="w-full h-full object-cover" data-alt="A sleek, futuristic dashboard interface glowing in high-key white and vibrant purple tones, showing upward trending performance graphs and precise typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIUVAEdIFhDVYxP11PjsTmDE1GGsjET8JWOll9_6JTFd79xy4wO43R4rJDCg87HAaZf3YAN73oKQsPCnbgffyMIz1B77wq0HLCkBFTORaDagzuUShHnAkdWaEwt9AfwW8wF-TtjBAMe08WB_ww4G8__TNKRtYu7uWAw4-YE-nEEqSZImAttKobJVTj14zXRspzSNuFG_b9S4Yj2FhWiOPetjMcA-4nUaDGCxZ8wMwVhDTfGQ2czyLn"/>
-</div>
-</div>
-</div>
-</section>
+
 <!-- Interactive FAQ Section -->
 <section class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
 <div class="text-center mb-12">

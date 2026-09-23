@@ -29,7 +29,7 @@ export const SERVICES = [
   "Web Development",
   "Landing Pages",
   "Website Redesign",
-  "SEO & Performance",
+
   "Branding",
   "Strategy",
   "Other",

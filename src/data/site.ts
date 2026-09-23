@@ -63,22 +63,7 @@ export const services: ServiceItem[] = [
     bestFor: "Campaigns, launches and paid traffic where every visit has a cost.",
     to: "/services/landing-pages",
   },
-  {
-    slug: "seo",
-    name: "SEO",
-    icon: "trending_up",
-    intro: "Technical and on-page foundations so the right people can find you.",
-    capabilities: [
-      "Technical SEO audit",
-      "Core Web Vitals work",
-      "Semantic markup and metadata",
-      "Structured data (JSON-LD)",
-      "Content structure and internal links",
-      "Search Console setup",
-    ],
-    bestFor: "Businesses relying on organic discovery rather than paid ads alone.",
-    to: "/services/seo-performance",
-  },
+
   {
     slug: "maintenance",
     name: "Website Maintenance",

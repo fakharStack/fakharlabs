@@ -27,7 +27,7 @@ export const Route = createFileRoute("/work")({
   component: Page,
 });
 
-const categories = ["All", "Healthcare", "Hospitality", "Retail / Food & Drink", "Professional Services"] as const;
+const categories = ["All", "Web Application", "Healthcare", "Health & Fitness"] as const;
 
 function Page() {
   const [category, setCategory] = useState<string>("All");
@@ -89,113 +89,146 @@ function Page() {
                   as="article"
                   className={isOpen ? "md:col-span-2" : ""}
                 >
-                  <div
-                    className={`project-card-container glass-card expand-card flex h-full flex-col overflow-hidden rounded-2xl ${
-                      isOpen ? "expand-card-open" : ""
-                    } ${open && !isOpen ? "expand-card-dim" : ""}`}
-                  >
-                    <div className="project-image-wrapper">
-                      <SmartImage
-                        src={p.image}
-                        alt={`${p.name} — ${p.type} design mockup`}
-                        width={1280}
-                        height={960}
-                        wrapperClassName={`w-full ${isOpen ? "aspect-[16/9]" : "aspect-[4/3]"}`}
-                      />
-                    </div>
-                    <div className="flex grow flex-col p-6 sm:p-7">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-label-caps text-label-caps rounded-full bg-primary-fixed/60 px-3 py-1 uppercase text-primary">
-                          {p.industry}
-                        </span>
-                        <span className="font-label-caps text-label-caps rounded-full border border-outline-variant/60 px-3 py-1 uppercase text-on-surface-variant">
-                          {p.type}
-                        </span>
+                  <div className="project-card-container group h-full">
+                    <div
+                      className={`glass-card expand-card relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-outline-variant/40 shadow-sm transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-xl ${
+                        isOpen ? "expand-card-open ring-1 ring-primary/20" : ""
+                      } ${open && !isOpen ? "expand-card-dim" : ""}`}
+                    >
+                      <div className="project-image-wrapper relative">
+                        <SmartImage
+                          src={p.image}
+                          alt={`${p.name} — ${p.type} design mockup`}
+                          width={1280}
+                          height={960}
+                          wrapperClassName={`w-full transition-all duration-500 ${isOpen ? "aspect-[16/9]" : "aspect-[4/3]"}`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
                       </div>
-                      <h2 className="mt-4 font-headline-md text-lg font-bold text-on-background sm:text-xl">
-                        {p.name}
-                      </h2>
-                      <p className="mt-2 font-body-md text-sm text-on-surface-variant sm:text-base">
-                        {p.short}
-                      </p>
-                      <ul className="mt-4 flex flex-wrap gap-2">
-                        {p.stack.map((t) => (
-                          <li
-                            key={t}
-                            className="rounded-md bg-surface-container px-2.5 py-1 font-body-md text-xs text-on-surface-variant"
-                          >
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
+                      
+                      <div className="flex grow flex-col p-6 sm:p-8">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-label-caps text-label-caps rounded-full bg-primary/10 px-3 py-1.5 uppercase tracking-wider text-primary">
+                            {p.industry}
+                          </span>
+                          <span className="font-label-caps text-label-caps rounded-full border border-outline-variant/50 bg-surface/50 px-3 py-1.5 uppercase tracking-wider text-on-surface-variant">
+                            {p.type}
+                          </span>
+                        </div>
+                        <h2 className="mt-5 font-headline-md text-xl font-bold text-on-background sm:text-2xl group-hover:text-primary transition-colors duration-300">
+                          {p.name}
+                        </h2>
+                        <p className="mt-3 min-h-[48px] font-body-md text-sm leading-relaxed text-on-surface-variant sm:text-base">
+                          {p.short}
+                        </p>
+                        <ul className="mt-5 flex flex-wrap gap-2">
+                          {p.stack.map((t) => (
+                            <li
+                              key={t}
+                              className="rounded-md bg-surface-variant/40 px-3 py-1.5 font-body-md text-xs font-medium text-on-surface-variant ring-1 ring-inset ring-outline-variant/20"
+                            >
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
 
-                      <div className={`expand-panel ${isOpen ? "expand-panel-open" : ""}`}>
-                        <div className="min-h-0 overflow-hidden">
-                          <div className="expand-panel-inner mt-6 grid gap-6 border-t border-outline-variant/50 pt-6 md:grid-cols-2">
-                            <div className="min-w-0">
-                              <p className="font-label-caps text-label-caps uppercase text-primary">
-                                Project overview
-                              </p>
-                              <p className="mt-3 font-body-md text-sm text-on-surface-variant">
-                                {p.overview}
-                              </p>
-                              <p className="font-label-caps text-label-caps mt-5 uppercase text-primary">
-                                Our approach
-                              </p>
-                              <p className="mt-3 font-body-md text-sm text-on-surface-variant">
-                                {p.approach}
-                              </p>
-                            </div>
-                            <div className="min-w-0">
-                              <p className="font-label-caps text-label-caps uppercase text-primary">
-                                Key features
-                              </p>
-                              <ul className="mt-3 space-y-2">
-                                {p.features.map((f) => (
-                                  <li
-                                    key={f}
-                                    className="flex items-start gap-2 font-body-md text-sm text-on-surface-variant"
-                                  >
-                                    <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-primary">
-                                      check_circle
-                                    </span>
-                                    <span className="min-w-0">{f}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                        <div className={`expand-panel ${isOpen ? "expand-panel-open" : ""}`}>
+                          <div className="min-h-0 overflow-hidden">
+                            <div className="expand-panel-inner mt-8 grid gap-8 rounded-2xl bg-surface-container-low/50 p-6 ring-1 ring-outline-variant/30 md:grid-cols-2 lg:p-8">
+                              <div className="min-w-0">
+                                <div className="flex items-center gap-2">
+                                  <span className="material-symbols-outlined text-primary text-xl">info</span>
+                                  <p className="font-label-caps text-label-caps uppercase tracking-widest text-primary">
+                                    Project overview
+                                  </p>
+                                </div>
+                                <p className="mt-4 font-body-md text-sm leading-relaxed text-on-surface-variant">
+                                  {p.overview}
+                                </p>
+                                
+                                {p.approach && (
+                                  <>
+                                    <div className="flex items-center gap-2 mt-8">
+                                      <span className="material-symbols-outlined text-primary text-xl">lightbulb</span>
+                                      <p className="font-label-caps text-label-caps uppercase tracking-widest text-primary">
+                                        Our approach
+                                      </p>
+                                    </div>
+                                    <p className="mt-4 font-body-md text-sm leading-relaxed text-on-surface-variant">
+                                      {p.approach}
+                                    </p>
+                                  </>
+                                )}
+                              </div>
+                              <div className="min-w-0 border-t border-outline-variant/30 pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+                                <div className="flex items-center gap-2">
+                                  <span className="material-symbols-outlined text-primary text-xl">verified</span>
+                                  <p className="font-label-caps text-label-caps uppercase tracking-widest text-primary">
+                                    Key features
+                                  </p>
+                                </div>
+                                <ul className="mt-5 space-y-3">
+                                  {p.features.map((f) => (
+                                    <li
+                                      key={f}
+                                      className="flex items-start gap-3 font-body-md text-sm text-on-surface-variant"
+                                    >
+                                      <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+                                        <span className="material-symbols-outlined text-[14px]">
+                                          check
+                                        </span>
+                                      </span>
+                                      <span className="min-w-0 pt-0.5 leading-relaxed">{f}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="mt-6 flex flex-wrap items-center gap-4">
-                        <button
-                          type="button"
-                          aria-expanded={isOpen}
-                          aria-controls={panelId}
-                          onClick={() => setOpen(isOpen ? null : p.slug)}
-                          className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-primary transition-colors hover:text-secondary"
-                        >
-                          {isOpen ? "Hide details" : "Project details"}
-                          <span
-                            aria-hidden="true"
-                            className={`material-symbols-outlined text-base transition-transform duration-300 ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
+                        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-outline-variant/30 pt-6">
+                          <button
+                            type="button"
+                            aria-expanded={isOpen}
+                            aria-controls={panelId}
+                            onClick={() => setOpen(isOpen ? null : p.slug)}
+                            className="btn-secondary !px-5 !py-2.5 text-sm font-medium hover:!bg-primary/5 hover:!border-primary/40 hover:!text-primary transition-all"
                           >
-                            expand_more
-                          </span>
-                        </button>
-                        <Link
-                          to="/case-studies"
-                          hash={p.slug}
-                          className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-on-surface-variant transition-colors hover:text-primary"
-                        >
-                          View case study
-                          <span className="material-symbols-outlined text-base">arrow_forward</span>
-                        </Link>
+                            {isOpen ? "Hide details" : "Detailed overview"}
+                            <span
+                              aria-hidden="true"
+                              className={`material-symbols-outlined text-[18px] transition-transform duration-300 ${
+                                isOpen ? "rotate-180" : ""
+                              }`}
+                            >
+                              expand_more
+                            </span>
+                          </button>
+                          {p.caseStudyTo && (
+                            <Link
+                              to="/case-studies"
+                              hash={p.slug}
+                              className="inline-flex min-h-10 items-center gap-2 font-body-md text-sm font-bold text-on-surface-variant transition-colors hover:text-primary"
+                            >
+                              View case study
+                              <span className="material-symbols-outlined text-base">arrow_forward</span>
+                            </Link>
+                          )}
+                          {p.url && (
+                            <a
+                              href={p.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex min-h-10 items-center gap-2 font-body-md text-sm font-bold text-primary transition-colors hover:text-secondary ml-auto"
+                            >
+                              Visit Live Project
+                              <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">open_in_new</span>
+                            </a>
+                          )}
+                        </div>
+                        <div id={panelId} className="sr-only" aria-hidden="true" />
                       </div>
-                      <div id={panelId} className="sr-only" aria-hidden="true" />
                     </div>
                   </div>
                 </Reveal>

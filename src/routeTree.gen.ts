@@ -26,7 +26,6 @@ import { Route as AdminNotificationsRouteImport } from './routes/admin.notificat
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesLandingPagesRouteImport } from './routes/services.landing-pages'
-import { Route as ServicesSeoPerformanceRouteImport } from './routes/services.seo-performance'
 import { Route as ServicesWebDesignRouteImport } from './routes/services.web-design'
 import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
 import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
@@ -123,11 +122,6 @@ const ServicesLandingPagesRoute = ServicesLandingPagesRouteImport.update({
   path: '/services/landing-pages',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesSeoPerformanceRoute = ServicesSeoPerformanceRouteImport.update({
-  id: '/services/seo-performance',
-  path: '/services/seo-performance',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesWebDesignRoute = ServicesWebDesignRouteImport.update({
   id: '/services/web-design',
   path: '/services/web-design',
@@ -195,7 +189,6 @@ export interface FileRoutesByFullPath {
   '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/services/landing-pages': typeof ServicesLandingPagesRoute
-  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
@@ -225,7 +218,6 @@ export interface FileRoutesByTo {
   '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/services/landing-pages': typeof ServicesLandingPagesRoute
-  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
@@ -256,7 +248,6 @@ export interface FileRoutesById {
   '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/services/landing-pages': typeof ServicesLandingPagesRoute
-  '/services/seo-performance': typeof ServicesSeoPerformanceRoute
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
@@ -288,7 +279,6 @@ export interface FileRouteTypes {
     | '/admin/notifications'
     | '/admin/settings'
     | '/services/landing-pages'
-    | '/services/seo-performance'
     | '/services/web-design'
     | '/services/web-development'
     | '/services/website-redesign'
@@ -318,7 +308,6 @@ export interface FileRouteTypes {
     | '/admin/notifications'
     | '/admin/settings'
     | '/services/landing-pages'
-    | '/services/seo-performance'
     | '/services/web-design'
     | '/services/web-development'
     | '/services/website-redesign'
@@ -348,7 +337,6 @@ export interface FileRouteTypes {
     | '/admin/notifications'
     | '/admin/settings'
     | '/services/landing-pages'
-    | '/services/seo-performance'
     | '/services/web-design'
     | '/services/web-development'
     | '/services/website-redesign'
@@ -379,7 +367,6 @@ export interface RootRouteChildren {
   AdminNotificationsRoute: typeof AdminNotificationsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   ServicesLandingPagesRoute: typeof ServicesLandingPagesRoute
-  ServicesSeoPerformanceRoute: typeof ServicesSeoPerformanceRoute
   ServicesWebDesignRoute: typeof ServicesWebDesignRoute
   ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
   ServicesWebsiteRedesignRoute: typeof ServicesWebsiteRedesignRoute
@@ -514,13 +501,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLandingPagesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/seo-performance': {
-      id: '/services/seo-performance'
-      path: '/services/seo-performance'
-      fullPath: '/services/seo-performance'
-      preLoaderRoute: typeof ServicesSeoPerformanceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/web-design': {
       id: '/services/web-design'
       path: '/services/web-design'
@@ -620,7 +600,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminNotificationsRoute: AdminNotificationsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   ServicesLandingPagesRoute: ServicesLandingPagesRoute,
-  ServicesSeoPerformanceRoute: ServicesSeoPerformanceRoute,
   ServicesWebDesignRoute: ServicesWebDesignRoute,
   ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
   ServicesWebsiteRedesignRoute: ServicesWebsiteRedesignRoute,

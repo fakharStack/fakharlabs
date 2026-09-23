@@ -1,12 +1,8 @@
-import dentalImg from "@/assets/case-dental.jpg";
-import roastersImg from "@/assets/case-roasters.jpg";
-import diningImg from "@/assets/case-dining.jpg";
-import legalImg from "@/assets/case-legal.jpg";
+import placeholderImg from "@/assets/project-placeholder.png";
 
 /**
  * Portfolio + case study content.
- * Imagery is design mockup work produced by the studio, not client screenshots,
- * and outcomes are described as delivered scope rather than invented metrics.
+ * All project content is centralized here.
  */
 export type Project = {
   slug: string;
@@ -16,162 +12,171 @@ export type Project = {
   image: string;
   short: string;
   stack: string[];
-  overview: string;
-  challenge: string;
-  approach: string;
-  design: string;
-  development: string;
+  overview?: string;
+  challenge?: string;
+  approach?: string;
+  design?: string;
+  development?: string;
   features: string[];
-  responsive: string;
-  performance: string;
-  outcome: string[];
-  caseStudyTo?: "/work/dental-clinic";
+  responsive?: string;
+  performance?: string;
+  outcome?: string[];
+  caseStudyTo?: string;
+  url?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "smile-studio-dental",
-    name: "Smile Studio Dental",
+    slug: "case-convertor",
+    name: "CaseConvertor",
+    industry: "Web Application",
+    type: "Utility",
+    image: placeholderImg,
+    short: "A fast, client-side utility for instantly converting text between various casings.",
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    overview: "A lightweight developer and writer utility designed to format text instantly without server roundtrips.",
+    features: [
+      "Real-time case conversion",
+      "One-click copy to clipboard",
+      "Character and word count tracking",
+      "Responsive clean interface"
+    ],
+    url: "https://caseconvertor-wine.vercel.app"
+  },
+  {
+    slug: "dental-parlor",
+    name: "Dental Parlor",
     industry: "Healthcare",
-    type: "Booking website",
-    image: dentalImg,
-    short:
-      "A calm, trust-first clinic website where booking an appointment is never more than one tap away.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Serverless forms"],
-    overview:
-      "A multi-treatment dental practice needed a website that reassured nervous patients and made appointment requests effortless on a phone.",
-    challenge:
-      "The previous site buried treatment information under stock imagery, and the booking action disappeared as soon as a visitor scrolled.",
-    approach:
-      "We restructured the content around patient questions — what the treatment is, what it costs, what happens on the day — and made booking a persistent action on every screen.",
-    design:
-      "A soft clinical palette, generous whitespace and photography-led treatment cards. Type sizes were raised for comfortable reading on small screens.",
-    development:
-      "Component-driven build with accessible form controls, server-validated submissions and per-treatment pages generated from a single content source.",
+    type: "Clinic Website",
+    image: placeholderImg,
+    short: "A modern, patient-focused clinic website built to build trust and streamline appointments.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "A clean digital presence for a dental clinic, prioritizing patient reassurance and easy access to service information.",
     features: [
-      "Persistent book-appointment action",
-      "Treatment pages with plain-language explanations",
-      "Accessible enquiry form with inline validation",
-      "Team and clinic introduction sections",
-      "FAQ addressing nervous-patient concerns",
+      "Service overview sections",
+      "Patient testimonials",
+      "Clear call-to-actions",
+      "Mobile-first responsive design"
     ],
-    responsive:
-      "Designed from 320px upward with thumb-reachable controls, stacked treatment cards and no horizontal scrolling at any breakpoint.",
-    performance:
-      "Lazy-loaded imagery with explicit dimensions, async decoding and restrained motion keep first paint fast on mobile networks.",
-    outcome: [
-      "Delivered a responsive booking-focused clinic website",
-      "Streamlined enquiry experience with validation and confirmation states",
-      "Reusable treatment page template the clinic can extend",
-    ],
-    caseStudyTo: "/work/dental-clinic",
+    url: "https://dental-parlor.vercel.app"
   },
   {
-    slug: "artisan-roasters",
-    name: "Artisan Roasters",
-    industry: "Retail / Food & Drink",
-    type: "Brand and commerce site",
-    image: roastersImg,
-    short:
-      "Brand-led storytelling paired with a lean subscription flow for a specialty coffee roastery.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Headless commerce"],
-    overview:
-      "A local roastery wanted its online presence to carry the same character as its shop, without turning into a heavy, generic storefront.",
-    challenge:
-      "Origin stories, roast profiles and subscription options all competed for the same space, leaving visitors unsure where to start.",
-    approach:
-      "We separated browsing from buying: an editorial layer for the story and roasts, and a short, decisive path for subscribing.",
-    design:
-      "Warm editorial typography, full-bleed product photography and a restrained palette that lets bag artwork carry the colour.",
-    development:
-      "Static-first pages with progressive enhancement for cart and subscription steps, and a content model the team updates themselves.",
+    slug: "fitness-arena-gym",
+    name: "Fitness Arena Gym",
+    industry: "Health & Fitness",
+    type: "Gym Website",
+    image: placeholderImg,
+    short: "A high-energy promotional site for a fitness center to showcase facilities and attract members.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "A bold, visual-heavy website designed to capture the energy of the gym and guide visitors toward membership.",
     features: [
-      "Roast catalogue with tasting notes",
-      "Three-step subscription selector",
-      "Origin and process storytelling sections",
-      "Stockist and opening-hours block",
-      "Newsletter capture without pop-ups",
+      "Facility showcases",
+      "Membership tier breakdowns",
+      "Trainer profiles",
+      "High-impact imagery"
     ],
-    responsive:
-      "Product grids collapse to single-column carousels on small screens with swipe support and preserved aspect ratios.",
-    performance:
-      "Image-heavy pages use responsive sources, lazy loading and deferred non-critical scripts.",
-    outcome: [
-      "Delivered a brand-led site with a shortened subscription path",
-      "Self-serve content model for roasts and stockists",
-      "Consistent design system shared across marketing and shop pages",
-    ],
+    url: "https://fitness-arena-gym-alpha.vercel.app"
   },
   {
-    slug: "lumina-dining",
-    name: "Lumina Dining",
-    industry: "Hospitality",
-    type: "Reservations website",
-    image: diningImg,
-    short:
-      "An editorial menu experience with instant reservations and seasonal content the team edits in-house.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Reservations API"],
-    overview:
-      "A restaurant group needed a site that sold the room and the menu, then handed guests straight to a reservation.",
-    challenge:
-      "Menus changed seasonally but lived in PDFs, which were unreadable on phones and invisible to search engines.",
-    approach:
-      "Menus became structured content — readable, searchable and updatable — with reservation entry points placed at each decision moment.",
-    design:
-      "Dark-on-light editorial layout, large food photography and a typographic menu treatment that reads like print.",
-    development:
-      "Structured menu data rendered to accessible markup with schema.org output, plus an embedded reservation flow with graceful fallbacks.",
+    slug: "ironman-gym",
+    name: "Iron Man Gym",
+    industry: "Health & Fitness",
+    type: "Gym Website",
+    image: placeholderImg,
+    short: "A striking fitness platform highlighting training programs and motivating prospective members.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "Designed to convey strength and motivation, this site serves as the digital front door for a local gym.",
     features: [
-      "Structured, seasonal menu pages",
-      "Reservation entry on every section",
-      "Private dining and events enquiry",
-      "Gallery with lazy-loaded imagery",
-      "Location, hours and access details",
+      "Program descriptions",
+      "Dynamic hero sections",
+      "Clear membership paths",
+      "Responsive layout"
     ],
-    responsive:
-      "Menu sections reflow to single column with sticky category navigation and comfortable line lengths on mobile.",
-    performance:
-      "Replacing PDF menus with HTML removed large downloads and made every dish indexable.",
-    outcome: [
-      "Delivered an editorial reservations website with structured menus",
-      "Removed PDF dependency for seasonal updates",
-      "Search-visible menu content with schema markup",
-    ],
+    url: "https://ironman-gym-tau.vercel.app"
   },
   {
-    slug: "apex-legal-group",
-    name: "Apex Legal Group",
-    industry: "Professional Services",
-    type: "Lead generation website",
-    image: legalImg,
-    short:
-      "A credibility-first practice site with clear service architecture and enquiry forms that qualify before the first call.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Secure form handling"],
-    overview:
-      "A legal practice needed to present multiple specialisms clearly and reduce time lost to enquiries outside their remit.",
-    challenge:
-      "A single generic contact form produced enquiries the team could not act on, and practice areas were hidden three clicks deep.",
-    approach:
-      "Each practice area received its own page and its own qualifying enquiry path, so context arrives with the enquiry.",
-    design:
-      "Restrained, confident typography, structured partner profiles and evidence-led layout rather than stock imagery.",
-    development:
-      "Per-area routing, validated multi-field enquiry forms and privacy-conscious submission handling.",
+    slug: "doctor-fitness",
+    name: "Doctor Fitness",
+    industry: "Healthcare",
+    type: "Professional Portfolio",
+    image: placeholderImg,
+    short: "A personal brand website bridging medical expertise and fitness coaching.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "A platform establishing authority for a professional who combines healthcare knowledge with fitness training.",
     features: [
-      "Practice area pages with scope and process",
-      "Qualifying enquiry forms per area",
-      "Partner and team profiles",
-      "Plain-language guidance sections",
-      "Accessible document and policy pages",
+      "Service offerings",
+      "Professional biography",
+      "Consultation booking pathways",
+      "Clean aesthetic"
     ],
-    responsive:
-      "Dense professional content is chunked into collapsible sections on mobile without hiding anything from search engines.",
-    performance:
-      "Text-first pages, system-friendly fonts and minimal JavaScript keep the site quick on office networks and phones alike.",
-    outcome: [
-      "Delivered a structured practice website with per-area enquiry routing",
-      "Qualifying questions captured before the first conversation",
-      "Template the firm can reuse for new practice areas",
-    ],
+    url: "https://doctor-fitness.vercel.app"
   },
+  {
+    slug: "dr-amna",
+    name: "Dr. Amna",
+    industry: "Healthcare",
+    type: "Professional Portfolio",
+    image: placeholderImg,
+    short: "A professional portfolio and consultation site for a medical practitioner.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "A trust-building personal website detailing medical expertise, services, and providing a direct line for patient inquiries.",
+    features: [
+      "Detailed professional background",
+      "Service listings",
+      "Patient resources",
+      "Accessible contact information"
+    ],
+    url: "https://dr-amna.vercel.app"
+  },
+  {
+    slug: "kidscareclinic",
+    name: "Kids Care Clinic",
+    industry: "Healthcare",
+    type: "Clinic Website",
+    image: placeholderImg,
+    short: "A welcoming and informative digital practice for pediatric care.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "Designed to reassure parents, this site provides clear information about pediatric services, clinic hours, and care philosophies.",
+    features: [
+      "Child-friendly visual design",
+      "Service breakdowns",
+      "Easy navigation for parents",
+      "Contact and location details"
+    ],
+    url: "https://kidscareclinic-chi.vercel.app"
+  },
+  {
+    slug: "tiny-tool-kit",
+    name: "Tiny Tool Kit",
+    industry: "Web Application",
+    type: "Utility",
+    image: placeholderImg,
+    short: "A collection of everyday digital tools bundled into a single, fast application.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "A centralized hub for small, useful web utilities designed for speed and ease of use without navigating multiple sites.",
+    features: [
+      "Multiple integrated mini-tools",
+      "Instant client-side execution",
+      "Unified interface",
+      "Responsive design"
+    ],
+    url: "https://tiny-tool-kit.vercel.app"
+  },
+  {
+    slug: "shift-canvas",
+    name: "Shift Canvas",
+    industry: "Web Application",
+    type: "Utility",
+    image: placeholderImg,
+    short: "A digital canvas interface for creative or organizational workflows.",
+    stack: ["React", "Tailwind CSS"],
+    overview: "An interactive web application providing users with a flexible space to organize ideas or manage visual tasks.",
+    features: [
+      "Interactive workspace",
+      "Intuitive UI controls",
+      "Responsive layout",
+      "Fluid user experience"
+    ],
+    url: "https://shift-canvas.vercel.app"
+  }
 ];

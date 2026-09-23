@@ -8,11 +8,11 @@ import { services, processSteps } from "@/data/site";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Website Development, Redesign, SEO | Fakhar Labs" },
+      { title: "Services — Website Development, Redesign | Fakhar Labs" },
       {
         name: "description",
         content:
-          "Website development, redesign, landing pages, SEO, maintenance and custom web solutions — what's included, who each service suits and how we deliver it.",
+          "Website development, redesign, landing pages, maintenance and custom web solutions — what's included, who each service suits and how we deliver it.",
       },
       { property: "og:title", content: "Services — Fakhar Labs" },
       {
@@ -51,14 +51,7 @@ const included: Record<string, string[]> = {
     "Event and conversion tracking",
     "Sections structured for future testing",
   ],
-  seo: [
-    "Technical crawl and issue list",
-    "Core Web Vitals remediation",
-    "Metadata, headings and semantic markup",
-    "Structured data implementation",
-    "Internal linking and content structure",
-    "Search Console and reporting setup",
-  ],
+
   maintenance: [
     "Scheduled dependency and security updates",
     "Uptime and error monitoring",

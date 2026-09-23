@@ -104,12 +104,7 @@ export const html = `
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">Your business has evolved. We bring your website back in step with it.</p>
 <span class="inline-flex items-center gap-2 text-primary font-medium">Explore <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="glass-panel rounded-3xl p-8 soft-shadow group transition-all duration-300 hover:-translate-y-1 scroll-reveal" href="/services/seo-performance">
-<span class="material-symbols-outlined text-primary text-4xl mb-6 block">trending_up</span>
-<h3 class="font-headline-md text-headline-md text-on-background mb-3">SEO &amp; Performance</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Better performance, better experience, better rankings — measured, not guessed.</p>
-<span class="inline-flex items-center gap-2 text-primary font-medium">Explore <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></span>
-</a>
+
 <a class="rounded-3xl p-8 soft-shadow group transition-all duration-300 hover:-translate-y-1 scroll-reveal bg-gradient-to-br from-primary to-secondary text-white" href="/contact">
 <span class="material-symbols-outlined text-4xl mb-6 block">chat_bubble</span>
 <h3 class="font-headline-md text-headline-md mb-3">Something else?</h3>
