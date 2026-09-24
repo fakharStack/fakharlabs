@@ -1,4 +1,12 @@
-import placeholderImg from "@/assets/project-placeholder.png";
+import caseConvertorImg from "@/assets/case-convertor.png";
+import dentalParlorImg from "@/assets/dental-parlor.png";
+import fitnessArenaImg from "@/assets/fitness-arena-gym.png";
+import ironmanGymImg from "@/assets/ironman-gym.png";
+import doctorFitnessImg from "@/assets/doctor-fitness.png";
+import drAmnaImg from "@/assets/dr-amna.png";
+import kidsCareImg from "@/assets/kidscareclinic.png";
+import tinyToolKitImg from "@/assets/tiny-tool-kit.png";
+import shiftCanvasImg from "@/assets/shift-canvas.png";
 
 /**
  * Portfolio + case study content.
@@ -31,7 +39,7 @@ export const projects: Project[] = [
     name: "CaseConvertor",
     industry: "Web Application",
     type: "Utility",
-    image: placeholderImg,
+    image: caseConvertorImg,
     short: "A fast, client-side utility for instantly converting text between various casings.",
     stack: ["React", "TypeScript", "Tailwind CSS"],
     overview: "A lightweight developer and writer utility designed to format text instantly without server roundtrips.",
@@ -48,7 +56,7 @@ export const projects: Project[] = [
     name: "Dental Parlor",
     industry: "Healthcare",
     type: "Clinic Website",
-    image: placeholderImg,
+    image: dentalParlorImg,
     short: "A modern, patient-focused clinic website built to build trust and streamline appointments.",
     stack: ["React", "Tailwind CSS"],
     overview: "A clean digital presence for a dental clinic, prioritizing patient reassurance and easy access to service information.",
@@ -65,7 +73,7 @@ export const projects: Project[] = [
     name: "Fitness Arena Gym",
     industry: "Health & Fitness",
     type: "Gym Website",
-    image: placeholderImg,
+    image: fitnessArenaImg,
     short: "A high-energy promotional site for a fitness center to showcase facilities and attract members.",
     stack: ["React", "Tailwind CSS"],
     overview: "A bold, visual-heavy website designed to capture the energy of the gym and guide visitors toward membership.",
@@ -82,7 +90,7 @@ export const projects: Project[] = [
     name: "Iron Man Gym",
     industry: "Health & Fitness",
     type: "Gym Website",
-    image: placeholderImg,
+    image: ironmanGymImg,
     short: "A striking fitness platform highlighting training programs and motivating prospective members.",
     stack: ["React", "Tailwind CSS"],
     overview: "Designed to convey strength and motivation, this site serves as the digital front door for a local gym.",
@@ -99,7 +107,7 @@ export const projects: Project[] = [
     name: "Doctor Fitness",
     industry: "Healthcare",
     type: "Professional Portfolio",
-    image: placeholderImg,
+    image: doctorFitnessImg,
     short: "A personal brand website bridging medical expertise and fitness coaching.",
     stack: ["React", "Tailwind CSS"],
     overview: "A platform establishing authority for a professional who combines healthcare knowledge with fitness training.",
@@ -116,7 +124,7 @@ export const projects: Project[] = [
     name: "Dr. Amna",
     industry: "Healthcare",
     type: "Professional Portfolio",
-    image: placeholderImg,
+    image: drAmnaImg,
     short: "A professional portfolio and consultation site for a medical practitioner.",
     stack: ["React", "Tailwind CSS"],
     overview: "A trust-building personal website detailing medical expertise, services, and providing a direct line for patient inquiries.",
@@ -133,7 +141,7 @@ export const projects: Project[] = [
     name: "Kids Care Clinic",
     industry: "Healthcare",
     type: "Clinic Website",
-    image: placeholderImg,
+    image: kidsCareImg,
     short: "A welcoming and informative digital practice for pediatric care.",
     stack: ["React", "Tailwind CSS"],
     overview: "Designed to reassure parents, this site provides clear information about pediatric services, clinic hours, and care philosophies.",
@@ -150,7 +158,7 @@ export const projects: Project[] = [
     name: "Tiny Tool Kit",
     industry: "Web Application",
     type: "Utility",
-    image: placeholderImg,
+    image: tinyToolKitImg,
     short: "A collection of everyday digital tools bundled into a single, fast application.",
     stack: ["React", "Tailwind CSS"],
     overview: "A centralized hub for small, useful web utilities designed for speed and ease of use without navigating multiple sites.",
@@ -167,7 +175,7 @@ export const projects: Project[] = [
     name: "Shift Canvas",
     industry: "Web Application",
     type: "Utility",
-    image: placeholderImg,
+    image: shiftCanvasImg,
     short: "A digital canvas interface for creative or organizational workflows.",
     stack: ["React", "Tailwind CSS"],
     overview: "An interactive web application providing users with a flexible space to organize ideas or manage visual tasks.",

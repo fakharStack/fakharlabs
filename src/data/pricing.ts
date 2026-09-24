@@ -36,14 +36,7 @@ export const currencyMeta: Record<
   },
 };
 
-export const SERVICE_IDS = [
-  "development",
-  "redesign",
-  "landing",
-  "webapp",
-
-  "maintenance",
-] as const;
+export const SERVICE_IDS = ["development", "redesign", "landing", "webapp", "maintenance"] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
 export const PLAN_IDS = ["basic", "professional", "business"] as const;
@@ -96,9 +89,9 @@ export const services: Service[] = [
         name: "Basic",
         tagline: "Get online properly",
         blurb: "A clean, fast presence for a new or small business.",
-        price: { PKR: 30000, USD: 400, GBP: 320 },
+        price: { PKR: 6999, USD: 99, GBP: 89 },
         cadence: "project",
-        timeline: "2–3 weeks",
+        timeline: "4 days",
         highlights: [
           "Up to 4 pages",
           "Mobile-first responsive build",
@@ -113,9 +106,9 @@ export const services: Service[] = [
         name: "Professional",
         tagline: "Most chosen",
         blurb: "A complete business website with content structure built to grow.",
-        price: { PKR: 45000, USD: 600, GBP: 480 },
+        price: { PKR: 13175, USD: 149, GBP: 129 },
         cadence: "project",
-        timeline: "3–5 weeks",
+        timeline: "1 week",
         highlights: [
           "Up to 8 pages",
           "Custom UI/UX design pass",
@@ -131,9 +124,9 @@ export const services: Service[] = [
         name: "Business",
         tagline: "Complete solution",
         blurb: "A larger site with content management, integrations and deeper support.",
-        price: { PKR: 75000, USD: 1000, GBP: 800 },
+        price: { PKR: 21250, USD: 279, GBP: 259 },
         cadence: "project",
-        timeline: "5–8 weeks",
+        timeline: "1–2 weeks",
         highlights: [
           "Up to 15 pages / templates",
           "Content management for your team",
@@ -147,16 +140,43 @@ export const services: Service[] = [
     ],
     comparison: [
       { feature: "Responsive design", values: { basic: true, professional: true, business: true } },
-      { feature: "Pages included", values: { basic: "Up to 4", professional: "Up to 8", business: "Up to 15" } },
-      { feature: "Custom UI/UX design", values: { basic: "Template-led", professional: true, business: true } },
-      { feature: "SEO foundations", values: { basic: true, professional: true, business: "Advanced + schema" } },
-      { feature: "Contact forms", values: { basic: "1 form", professional: "Multiple forms", business: "Multi-step forms" } },
-      { feature: "Integrations", values: { basic: false, professional: "Basic", business: "CRM / booking / email" } },
-      { feature: "CMS / content editing", values: { basic: false, professional: false, business: true } },
-      { feature: "Performance optimisation", values: { basic: "Baseline", professional: true, business: true } },
-      { feature: "Deployment support", values: { basic: true, professional: true, business: true } },
+      {
+        feature: "Pages included",
+        values: { basic: "Up to 4", professional: "Up to 8", business: "Up to 15" },
+      },
+      {
+        feature: "Custom UI/UX design",
+        values: { basic: "Template-led", professional: true, business: true },
+      },
+      {
+        feature: "SEO foundations",
+        values: { basic: true, professional: true, business: "Advanced + schema" },
+      },
+      {
+        feature: "Contact forms",
+        values: { basic: "1 form", professional: "Multiple forms", business: "Multi-step forms" },
+      },
+      {
+        feature: "Integrations",
+        values: { basic: false, professional: "Basic", business: "CRM / booking / email" },
+      },
+      {
+        feature: "CMS / content editing",
+        values: { basic: false, professional: false, business: true },
+      },
+      {
+        feature: "Performance optimisation",
+        values: { basic: "Baseline", professional: true, business: true },
+      },
+      {
+        feature: "Deployment support",
+        values: { basic: true, professional: true, business: true },
+      },
       { feature: "Revision rounds", values: { basic: "1", professional: "2", business: "3" } },
-      { feature: "Maintenance option", values: { basic: true, professional: "2 months free", business: "2 months free" } },
+      {
+        feature: "Maintenance option",
+        values: { basic: true, professional: "2 months free", business: "2 months free" },
+      },
     ],
   },
   {
@@ -172,9 +192,9 @@ export const services: Service[] = [
         name: "Basic",
         tagline: "Visual refresh",
         blurb: "New look on your existing structure.",
-        price: { PKR: 25000, USD: 350, GBP: 280 },
+        price: { PKR: 9999, USD: 129, GBP: 109 },
         cadence: "project",
-        timeline: "2–3 weeks",
+        timeline: "4 days",
         highlights: [
           "Up to 4 pages restyled",
           "Mobile-first responsive pass",
@@ -189,9 +209,9 @@ export const services: Service[] = [
         name: "Professional",
         tagline: "Most chosen",
         blurb: "Rebuild the structure and the design together.",
-        price: { PKR: 40000, USD: 550, GBP: 440 },
+        price: { PKR: 18999, USD: 199, GBP: 169 },
         cadence: "project",
-        timeline: "3–5 weeks",
+        timeline: "1 week",
         highlights: [
           "UX audit & new site structure",
           "Up to 8 pages redesigned",
@@ -207,9 +227,9 @@ export const services: Service[] = [
         name: "Business",
         tagline: "Complete rebuild",
         blurb: "A full platform and content transformation.",
-        price: { PKR: 65000, USD: 900, GBP: 720 },
+        price: { PKR: 29999, USD: 349, GBP: 299 },
         cadence: "project",
-        timeline: "5–8 weeks",
+        timeline: "1–2 weeks",
         highlights: [
           "Up to 15 pages / templates",
           "Content management for your team",
@@ -223,14 +243,35 @@ export const services: Service[] = [
     ],
     comparison: [
       { feature: "Responsive design", values: { basic: true, professional: true, business: true } },
-      { feature: "Pages included", values: { basic: "Up to 4", professional: "Up to 8", business: "Up to 15" } },
+      {
+        feature: "Pages included",
+        values: { basic: "Up to 4", professional: "Up to 8", business: "Up to 15" },
+      },
       { feature: "UX audit", values: { basic: false, professional: true, business: true } },
-      { feature: "Custom UI/UX design", values: { basic: "Restyle", professional: true, business: true } },
-      { feature: "Content migration", values: { basic: "Reused as-is", professional: true, business: true } },
-      { feature: "SEO-safe redirects", values: { basic: false, professional: true, business: true } },
-      { feature: "CMS / content editing", values: { basic: false, professional: false, business: true } },
-      { feature: "Performance optimisation", values: { basic: "Baseline", professional: true, business: true } },
-      { feature: "Deployment support", values: { basic: true, professional: true, business: true } },
+      {
+        feature: "Custom UI/UX design",
+        values: { basic: "Restyle", professional: true, business: true },
+      },
+      {
+        feature: "Content migration",
+        values: { basic: "Reused as-is", professional: true, business: true },
+      },
+      {
+        feature: "SEO-safe redirects",
+        values: { basic: false, professional: true, business: true },
+      },
+      {
+        feature: "CMS / content editing",
+        values: { basic: false, professional: false, business: true },
+      },
+      {
+        feature: "Performance optimisation",
+        values: { basic: "Baseline", professional: true, business: true },
+      },
+      {
+        feature: "Deployment support",
+        values: { basic: true, professional: true, business: true },
+      },
       { feature: "Revision rounds", values: { basic: "1", professional: "2", business: "3" } },
     ],
   },
@@ -247,9 +288,9 @@ export const services: Service[] = [
         name: "Basic",
         tagline: "Single page",
         blurb: "A focused page live in days.",
-        price: { PKR: 15000, USD: 150, GBP: 120 },
+        price: { PKR: 5999, USD: 79, GBP: 69 },
         cadence: "project",
-        timeline: "3–7 days",
+        timeline: "4 days",
         highlights: [
           "Single custom page",
           "Lead form + thank-you state",
@@ -264,9 +305,9 @@ export const services: Service[] = [
         name: "Professional",
         tagline: "Most chosen",
         blurb: "Designed and instrumented to convert.",
-        price: { PKR: 25000, USD: 250, GBP: 200 },
+        price: { PKR: 11999, USD: 129, GBP: 109 },
         cadence: "project",
-        timeline: "1–2 weeks",
+        timeline: "1 week",
         highlights: [
           "Conversion-led layout & copy polish",
           "Custom sections and imagery",
@@ -282,9 +323,9 @@ export const services: Service[] = [
         name: "Business",
         tagline: "Campaign set",
         blurb: "A small funnel instead of a single page.",
-        price: { PKR: 40000, USD: 400, GBP: 320 },
+        price: { PKR: 18999, USD: 199, GBP: 169 },
         cadence: "project",
-        timeline: "2–3 weeks",
+        timeline: "1–2 weeks",
         highlights: [
           "Up to 3 campaign pages",
           "Multi-step or qualifying forms",
@@ -298,13 +339,31 @@ export const services: Service[] = [
     ],
     comparison: [
       { feature: "Responsive design", values: { basic: true, professional: true, business: true } },
-      { feature: "Pages included", values: { basic: "1", professional: "1 + thank-you", business: "Up to 3" } },
-      { feature: "Custom UI/UX design", values: { basic: "Guided layout", professional: true, business: true } },
+      {
+        feature: "Pages included",
+        values: { basic: "1", professional: "1 + thank-you", business: "Up to 3" },
+      },
+      {
+        feature: "Custom UI/UX design",
+        values: { basic: "Guided layout", professional: true, business: true },
+      },
       { feature: "SEO foundations", values: { basic: true, professional: true, business: true } },
-      { feature: "Contact forms", values: { basic: "Simple form", professional: "Tracked form", business: "Multi-step form" } },
-      { feature: "Analytics & tracking", values: { basic: false, professional: true, business: true } },
-      { feature: "Integrations", values: { basic: false, professional: "Email / CRM", business: "Automation flows" } },
-      { feature: "Performance optimisation", values: { basic: "Baseline", professional: true, business: true } },
+      {
+        feature: "Contact forms",
+        values: { basic: "Simple form", professional: "Tracked form", business: "Multi-step form" },
+      },
+      {
+        feature: "Analytics & tracking",
+        values: { basic: false, professional: true, business: true },
+      },
+      {
+        feature: "Integrations",
+        values: { basic: false, professional: "Email / CRM", business: "Automation flows" },
+      },
+      {
+        feature: "Performance optimisation",
+        values: { basic: "Baseline", professional: true, business: true },
+      },
       { feature: "Revision rounds", values: { basic: "1", professional: "2", business: "3" } },
     ],
   },
@@ -314,17 +373,16 @@ export const services: Service[] = [
     shortLabel: "Web app",
     icon: "dashboard_customize",
     headline: "When the website has to do real work — accounts, data and dashboards.",
-    intro:
-      "Scope varies a lot here, so treat these as entry points and expect a tailored quote.",
+    intro: "Scope varies a lot here, so treat these as entry points and expect a tailored quote.",
     plans: [
       {
         id: "basic",
         name: "Basic",
         tagline: "Focused tool",
         blurb: "One core workflow, built properly.",
-        price: { PKR: 75000, USD: 800, GBP: 650 },
+        price: { PKR: 29999, USD: 399, GBP: 329 },
         cadence: "project",
-        timeline: "3–5 weeks",
+        timeline: "4 days",
         highlights: [
           "Single core workflow",
           "Authentication & user accounts",
@@ -339,9 +397,9 @@ export const services: Service[] = [
         name: "Professional",
         tagline: "Most chosen",
         blurb: "A multi-role application with an admin side.",
-        price: { PKR: 120000, USD: 1300, GBP: 1050 },
+        price: { PKR: 49999, USD: 649, GBP: 529 },
         cadence: "project",
-        timeline: "5–9 weeks",
+        timeline: "1 week",
         highlights: [
           "Multiple workflows",
           "Roles & permissions",
@@ -357,9 +415,9 @@ export const services: Service[] = [
         name: "Business",
         tagline: "Complete platform",
         blurb: "A larger platform with automation and deeper support.",
-        price: { PKR: 200000, USD: 2000, GBP: 1600 },
+        price: { PKR: 79999, USD: 999, GBP: 829 },
         cadence: "project",
-        timeline: "8–14 weeks",
+        timeline: "1–2 weeks",
         highlights: [
           "Complex, multi-module product",
           "Automated workflows & notifications",
@@ -373,14 +431,39 @@ export const services: Service[] = [
     ],
     comparison: [
       { feature: "Responsive design", values: { basic: true, professional: true, business: true } },
-      { feature: "Custom UI/UX design", values: { basic: true, professional: true, business: true } },
-      { feature: "Authentication & accounts", values: { basic: true, professional: "Roles & permissions", business: "Advanced access control" } },
-      { feature: "Database design", values: { basic: "Single domain", professional: "Multi-entity", business: "Multi-module" } },
+      {
+        feature: "Custom UI/UX design",
+        values: { basic: true, professional: true, business: true },
+      },
+      {
+        feature: "Authentication & accounts",
+        values: {
+          basic: true,
+          professional: "Roles & permissions",
+          business: "Advanced access control",
+        },
+      },
+      {
+        feature: "Database design",
+        values: { basic: "Single domain", professional: "Multi-entity", business: "Multi-module" },
+      },
       { feature: "Admin dashboard", values: { basic: false, professional: true, business: true } },
-      { feature: "Integrations", values: { basic: false, professional: "APIs", business: "APIs + automation" } },
-      { feature: "Performance optimisation", values: { basic: "Baseline", professional: true, business: "Reviewed & tuned" } },
-      { feature: "Deployment support", values: { basic: true, professional: true, business: true } },
-      { feature: "Documentation & handover", values: { basic: "Basic", professional: true, business: "Full" } },
+      {
+        feature: "Integrations",
+        values: { basic: false, professional: "APIs", business: "APIs + automation" },
+      },
+      {
+        feature: "Performance optimisation",
+        values: { basic: "Baseline", professional: true, business: "Reviewed & tuned" },
+      },
+      {
+        feature: "Deployment support",
+        values: { basic: true, professional: true, business: true },
+      },
+      {
+        feature: "Documentation & handover",
+        values: { basic: "Basic", professional: true, business: "Full" },
+      },
       { feature: "Revision rounds", values: { basic: "1", professional: "2", business: "3" } },
     ],
   },
@@ -449,15 +532,47 @@ export const services: Service[] = [
       },
     ],
     comparison: [
-      { feature: "Recurring fee", values: { basic: "None", professional: "Quoted after 2 free months", business: "Quoted after 2 free months" } },
-      { feature: "Deployment handled by us", values: { basic: false, professional: true, business: true } },
-      { feature: "Uptime monitoring", values: { basic: false, professional: true, business: true } },
-      { feature: "Backend / service monitoring", values: { basic: false, professional: "Where applicable", business: true } },
+      {
+        feature: "Recurring fee",
+        values: {
+          basic: "None",
+          professional: "Quoted after 2 free months",
+          business: "Quoted after 2 free months",
+        },
+      },
+      {
+        feature: "Deployment handled by us",
+        values: { basic: false, professional: true, business: true },
+      },
+      {
+        feature: "Uptime monitoring",
+        values: { basic: false, professional: true, business: true },
+      },
+      {
+        feature: "Backend / service monitoring",
+        values: { basic: false, professional: "Where applicable", business: true },
+      },
       { feature: "Minor fixes", values: { basic: false, professional: true, business: true } },
-      { feature: "Small content updates", values: { basic: false, professional: "Included allowance", business: "Larger allowance" } },
-      { feature: "Security & dependency updates", values: { basic: false, professional: true, business: true } },
-      { feature: "Priority response", values: { basic: false, professional: false, business: true } },
-      { feature: "New features / redesigns", values: { basic: "Separate project", professional: "Separate project", business: "Separate project" } },
+      {
+        feature: "Small content updates",
+        values: { basic: false, professional: "Included allowance", business: "Larger allowance" },
+      },
+      {
+        feature: "Security & dependency updates",
+        values: { basic: false, professional: true, business: true },
+      },
+      {
+        feature: "Priority response",
+        values: { basic: false, professional: false, business: true },
+      },
+      {
+        feature: "New features / redesigns",
+        values: {
+          basic: "Separate project",
+          professional: "Separate project",
+          business: "Separate project",
+        },
+      },
     ],
   },
 ];
@@ -523,11 +638,11 @@ export function resolvePrice(plan: Plan, currency: CurrencyCode): ResolvedPrice 
     };
   }
 
-  const final = amount * (1 - LAUNCH_DISCOUNT);
+  const original = Math.round(amount / (1 - LAUNCH_DISCOUNT));
   return {
     kind: "amount",
-    original: formatPrice(amount, currency),
-    final: formatPrice(final, currency),
+    original: formatPrice(original, currency),
+    final: formatPrice(amount, currency),
     discountPercent: Math.round(LAUNCH_DISCOUNT * 100),
     cadenceLabel,
   };

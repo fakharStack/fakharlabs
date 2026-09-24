@@ -70,7 +70,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Fakhar Labs — Digital Experiences" },
       { property: "og:description", content: "Fakhar Labs crafts high-performance websites for ambitious brands." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:url", content: "https://fakharlabs.com" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [
       {
