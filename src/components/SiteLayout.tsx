@@ -17,7 +17,6 @@ const serviceLinks = [
   { to: "/services/web-development", label: "Web Development", icon: "code" },
   { to: "/services/landing-pages", label: "Landing Pages", icon: "rocket_launch" },
   { to: "/services/website-redesign", label: "Website Redesign", icon: "autorenew" },
-
 ] as const;
 
 function TopNav() {
@@ -63,7 +62,9 @@ function TopNav() {
       ref={navRef}
       aria-label="Main"
       className={`fixed top-0 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-container-max -translate-x-1/2 rounded-2xl glass-panel glass-nav transition-all duration-300 sm:w-[calc(100%-3rem)] md:w-[92%] md:rounded-full ${
-        scrolled ? "mt-2 shadow-[0_10px_40px_-12px_rgba(99,14,212,0.25)] md:mt-3" : "mt-3 soft-shadow md:mt-6"
+        scrolled
+          ? "mt-2 shadow-[0_10px_40px_-12px_rgba(99,14,212,0.25)] md:mt-3"
+          : "mt-3 soft-shadow md:mt-6"
       }`}
     >
       <div className="flex w-full items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8 lg:py-3">
@@ -103,7 +104,9 @@ function TopNav() {
                         to={s.to}
                         className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-on-surface-variant transition-colors hover:bg-surface-variant/60 hover:text-primary"
                       >
-                        <span className="material-symbols-outlined text-primary text-xl">{s.icon}</span>
+                        <span className="material-symbols-outlined text-primary text-xl">
+                          {s.icon}
+                        </span>
                         {s.label}
                       </Link>
                     ))}
@@ -149,44 +152,47 @@ function TopNav() {
           id="mobile-nav"
           className="mobile-nav-panel max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border-t border-outline-variant/30 px-5 py-5 font-body-md text-body-md lg:hidden"
         >
-        <div className="flex min-w-0 flex-col gap-1">
-          {navLinks.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              onClick={() => setOpen(false)}
-              className="flex min-h-11 items-center rounded-lg px-2 py-3 text-on-surface-variant transition-colors hover:bg-primary/5 hover:text-primary"
-              activeProps={{ className: "text-primary font-semibold" }}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <div className="my-2 flex flex-col border-l border-outline-variant/40 pl-3">
-            {serviceLinks.map((s) => (
+          <div className="flex min-w-0 flex-col gap-1">
+            {navLinks.map((l) => (
               <Link
-                key={s.to}
-                to={s.to}
+                key={l.to}
+                to={l.to}
                 onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-2.5 text-sm text-on-surface-variant transition-colors hover:bg-primary/5 hover:text-primary"
+                className="flex min-h-11 items-center rounded-lg px-2 py-3 text-on-surface-variant transition-colors hover:bg-primary/5 hover:text-primary"
+                activeProps={{ className: "text-primary font-semibold" }}
               >
-                <span aria-hidden="true" className="material-symbols-outlined shrink-0 text-lg text-primary">
-                  {s.icon}
-                </span>
-                <span className="min-w-0 truncate">{s.label}</span>
+                {l.label}
               </Link>
             ))}
+            <div className="my-2 flex flex-col border-l border-outline-variant/40 pl-3">
+              {serviceLinks.map((s) => (
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-2.5 text-sm text-on-surface-variant transition-colors hover:bg-primary/5 hover:text-primary"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="material-symbols-outlined shrink-0 text-lg text-primary"
+                  >
+                    {s.icon}
+                  </span>
+                  <span className="min-w-0 truncate">{s.label}</span>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-2 flex items-center gap-3">
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="btn-primary min-h-12 grow !py-3"
+              >
+                Get Started
+              </Link>
+              <WhatsAppIconButton message="Hi Fakhar Labs — I'd like to discuss a project." />
+            </div>
           </div>
-          <div className="mt-2 flex items-center gap-3">
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="btn-primary min-h-12 grow !py-3"
-            >
-              Get Started
-            </Link>
-            <WhatsAppIconButton message="Hi Fakhar Labs — I'd like to discuss a project." />
-          </div>
-        </div>
         </div>
       )}
     </nav>
@@ -220,9 +226,8 @@ function SiteFooter() {
             </Link>
 
             <p className="mt-4 max-w-sm font-body-md text-sm leading-relaxed text-slate-300">
-              Fakhar Labs builds high-quality websites, web applications and
-              AI-powered digital products for businesses — engineered for
-              speed, clarity and growth.
+              Fakhar Labs builds high-quality websites, web applications and AI-powered digital
+              products for businesses — engineered for speed, clarity and growth.
             </p>
           </div>
 
@@ -311,18 +316,14 @@ function SiteFooter() {
             </h3>
 
             <p className="max-w-xs font-body-md text-sm leading-relaxed text-slate-300">
-              Tell us what you're building — we'll reply within one business
-              day.
+              Tell us what you're building — we'll reply within one business day.
             </p>
 
             <a
               href="mailto:fakharlabs@gmail.com"
               className="mt-4 inline-flex items-center gap-2 font-body-md text-sm text-slate-300 transition-colors duration-200 hover:text-primary-fixed"
             >
-              <span
-                aria-hidden="true"
-                className="material-symbols-outlined text-[18px]"
-              >
+              <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
                 mail
               </span>
               fakharlabs@gmail.com
@@ -333,7 +334,6 @@ function SiteFooter() {
               className="group mt-5 inline-flex min-h-10 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-5 py-2.5 font-body-md text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30"
             >
               Get Started
-
               <span
                 aria-hidden="true"
                 className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1"
@@ -350,15 +350,12 @@ function SiteFooter() {
             © {new Date().getFullYear()} Fakhar Labs. All rights reserved.
           </p>
 
-          <p className="font-body-md text-xs text-slate-500">
-            Designed &amp; built in-house.
-          </p>
+          <p className="font-body-md text-xs text-slate-500">Designed &amp; built in-house.</p>
         </div>
       </div>
     </footer>
   );
 }
-
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (

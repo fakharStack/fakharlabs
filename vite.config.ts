@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from "vite";
+import path from "node:path";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
@@ -32,19 +33,24 @@ export default defineConfig(({ mode }) => {
       ? { preset }
       : {};
   return {
-  server: { host: "::", port: 8080, strictPort: true },
-  preview: { host: "::", port: 8080 },
-  plugins: [
-    tsConfigPaths(),
-    tailwindcss(),
-    tanstackStart({
-      // Route the server entry through src/server.ts (SSR error wrapper).
-      server: { entry: "server" },
-    }),
-    react(),
-    ...(process.env["NODE_ENV"] === "production" || process.argv.includes("build")
-      ? [nitro(nitroOptions)]
-      : []),
-  ],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+    server: { host: "0.0.0.0", port: 3000, strictPort: true, allowedHosts: true },
+    preview: { host: "0.0.0.0", port: 3000 },
+    plugins: [
+      tsConfigPaths(),
+      tailwindcss(),
+      tanstackStart({
+        // Route the server entry through src/server.ts (SSR error wrapper).
+        server: { entry: "server" },
+      }),
+      react(),
+      ...(process.env["NODE_ENV"] === "production" || process.argv.includes("build")
+        ? [nitro(nitroOptions)]
+        : []),
+    ],
   };
 });

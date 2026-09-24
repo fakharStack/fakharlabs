@@ -35,55 +35,22 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "case-convertor",
-    name: "CaseConvertor",
-    industry: "Web Application",
-    type: "Utility",
-    image: caseConvertorImg,
-    short: "A fast, client-side utility for instantly converting text between various casings.",
-    stack: ["React", "TypeScript", "Tailwind CSS"],
-    overview: "A lightweight developer and writer utility designed to format text instantly without server roundtrips.",
-    features: [
-      "Real-time case conversion",
-      "One-click copy to clipboard",
-      "Character and word count tracking",
-      "Responsive clean interface"
-    ],
-    url: "https://caseconvertor-wine.vercel.app"
-  },
-  {
-    slug: "dental-parlor",
-    name: "Dental Parlor",
+    slug: "kidscareclinic",
+    name: "Kids Care Clinic",
     industry: "Healthcare",
     type: "Clinic Website",
-    image: dentalParlorImg,
-    short: "A modern, patient-focused clinic website built to build trust and streamline appointments.",
+    image: kidsCareImg,
+    short: "A welcoming and informative digital practice for pediatric care.",
     stack: ["React", "Tailwind CSS"],
-    overview: "A clean digital presence for a dental clinic, prioritizing patient reassurance and easy access to service information.",
+    overview:
+      "Designed to reassure parents, this site provides clear information about pediatric services, clinic hours, and care philosophies.",
     features: [
-      "Service overview sections",
-      "Patient testimonials",
-      "Clear call-to-actions",
-      "Mobile-first responsive design"
+      "Child-friendly visual design",
+      "Service breakdowns",
+      "Easy navigation for parents",
+      "Contact and location details",
     ],
-    url: "https://dental-parlor.vercel.app"
-  },
-  {
-    slug: "fitness-arena-gym",
-    name: "Fitness Arena Gym",
-    industry: "Health & Fitness",
-    type: "Gym Website",
-    image: fitnessArenaImg,
-    short: "A high-energy promotional site for a fitness center to showcase facilities and attract members.",
-    stack: ["React", "Tailwind CSS"],
-    overview: "A bold, visual-heavy website designed to capture the energy of the gym and guide visitors toward membership.",
-    features: [
-      "Facility showcases",
-      "Membership tier breakdowns",
-      "Trainer profiles",
-      "High-impact imagery"
-    ],
-    url: "https://fitness-arena-gym-alpha.vercel.app"
+    url: "https://kidscareclinic-chi.vercel.app",
   },
   {
     slug: "ironman-gym",
@@ -91,16 +58,37 @@ export const projects: Project[] = [
     industry: "Health & Fitness",
     type: "Gym Website",
     image: ironmanGymImg,
-    short: "A striking fitness platform highlighting training programs and motivating prospective members.",
+    short:
+      "A striking fitness platform highlighting training programs and motivating prospective members.",
     stack: ["React", "Tailwind CSS"],
-    overview: "Designed to convey strength and motivation, this site serves as the digital front door for a local gym.",
+    overview:
+      "Designed to convey strength and motivation, this site serves as the digital front door for a local gym.",
     features: [
       "Program descriptions",
       "Dynamic hero sections",
       "Clear membership paths",
-      "Responsive layout"
+      "Responsive layout",
     ],
-    url: "https://ironman-gym-tau.vercel.app"
+    url: "https://ironman-gym-tau.vercel.app",
+  },
+  {
+    slug: "fitness-arena-gym",
+    name: "Fitness Arena Gym",
+    industry: "Health & Fitness",
+    type: "Gym Website",
+    image: fitnessArenaImg,
+    short:
+      "A high-energy promotional site for a fitness center to showcase facilities and attract members.",
+    stack: ["React", "Tailwind CSS"],
+    overview:
+      "A bold, visual-heavy website designed to capture the energy of the gym and guide visitors toward membership.",
+    features: [
+      "Facility showcases",
+      "Membership tier breakdowns",
+      "Trainer profiles",
+      "High-impact imagery",
+    ],
+    url: "https://fitness-arena-gym-alpha.vercel.app",
   },
   {
     slug: "doctor-fitness",
@@ -110,14 +98,15 @@ export const projects: Project[] = [
     image: doctorFitnessImg,
     short: "A personal brand website bridging medical expertise and fitness coaching.",
     stack: ["React", "Tailwind CSS"],
-    overview: "A platform establishing authority for a professional who combines healthcare knowledge with fitness training.",
+    overview:
+      "A platform establishing authority for a professional who combines healthcare knowledge with fitness training.",
     features: [
       "Service offerings",
       "Professional biography",
       "Consultation booking pathways",
-      "Clean aesthetic"
+      "Clean aesthetic",
     ],
-    url: "https://doctor-fitness.vercel.app"
+    url: "https://doctor-fitness.vercel.app",
   },
   {
     slug: "dr-amna",
@@ -127,31 +116,15 @@ export const projects: Project[] = [
     image: drAmnaImg,
     short: "A professional portfolio and consultation site for a medical practitioner.",
     stack: ["React", "Tailwind CSS"],
-    overview: "A trust-building personal website detailing medical expertise, services, and providing a direct line for patient inquiries.",
+    overview:
+      "A trust-building personal website detailing medical expertise, services, and providing a direct line for patient inquiries.",
     features: [
       "Detailed professional background",
       "Service listings",
       "Patient resources",
-      "Accessible contact information"
+      "Accessible contact information",
     ],
-    url: "https://dr-amna.vercel.app"
-  },
-  {
-    slug: "kidscareclinic",
-    name: "Kids Care Clinic",
-    industry: "Healthcare",
-    type: "Clinic Website",
-    image: kidsCareImg,
-    short: "A welcoming and informative digital practice for pediatric care.",
-    stack: ["React", "Tailwind CSS"],
-    overview: "Designed to reassure parents, this site provides clear information about pediatric services, clinic hours, and care philosophies.",
-    features: [
-      "Child-friendly visual design",
-      "Service breakdowns",
-      "Easy navigation for parents",
-      "Contact and location details"
-    ],
-    url: "https://kidscareclinic-chi.vercel.app"
+    url: "https://dr-amna.vercel.app",
   },
   {
     slug: "tiny-tool-kit",
@@ -161,14 +134,53 @@ export const projects: Project[] = [
     image: tinyToolKitImg,
     short: "A collection of everyday digital tools bundled into a single, fast application.",
     stack: ["React", "Tailwind CSS"],
-    overview: "A centralized hub for small, useful web utilities designed for speed and ease of use without navigating multiple sites.",
+    overview:
+      "A centralized hub for small, useful web utilities designed for speed and ease of use without navigating multiple sites.",
     features: [
       "Multiple integrated mini-tools",
       "Instant client-side execution",
       "Unified interface",
-      "Responsive design"
+      "Responsive design",
     ],
-    url: "https://tiny-tool-kit.vercel.app"
+    url: "https://tiny-tool-kit.vercel.app",
+  },
+  
+  {
+    slug: "case-convertor",
+    name: "CaseConvertor",
+    industry: "Web Application",
+    type: "Utility",
+    image: caseConvertorImg,
+    short: "A fast, client-side utility for instantly converting text between various casings.",
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    overview:
+      "A lightweight developer and writer utility designed to format text instantly without server roundtrips.",
+    features: [
+      "Real-time case conversion",
+      "One-click copy to clipboard",
+      "Character and word count tracking",
+      "Responsive clean interface",
+    ],
+    url: "https://caseconvertor-wine.vercel.app",
+  },
+  {
+    slug: "dental-parlor",
+    name: "Dental Parlor",
+    industry: "Healthcare",
+    type: "Clinic Website",
+    image: dentalParlorImg,
+    short:
+      "A modern, patient-focused clinic website built to build trust and streamline appointments.",
+    stack: ["React", "Tailwind CSS"],
+    overview:
+      "A clean digital presence for a dental clinic, prioritizing patient reassurance and easy access to service information.",
+    features: [
+      "Service overview sections",
+      "Patient testimonials",
+      "Clear call-to-actions",
+      "Mobile-first responsive design",
+    ],
+    url: "https://dental-parlor.vercel.app",
   },
   {
     slug: "shift-canvas",
@@ -178,13 +190,14 @@ export const projects: Project[] = [
     image: shiftCanvasImg,
     short: "A digital canvas interface for creative or organizational workflows.",
     stack: ["React", "Tailwind CSS"],
-    overview: "An interactive web application providing users with a flexible space to organize ideas or manage visual tasks.",
+    overview:
+      "An interactive web application providing users with a flexible space to organize ideas or manage visual tasks.",
     features: [
       "Interactive workspace",
       "Intuitive UI controls",
       "Responsive layout",
-      "Fluid user experience"
+      "Fluid user experience",
     ],
-    url: "https://shift-canvas.vercel.app"
-  }
+    url: "https://shift-canvas.vercel.app",
+  },
 ];

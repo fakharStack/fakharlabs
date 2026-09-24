@@ -11,6 +11,31 @@ import { useEffect, type ReactNode } from "react";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Toaster } from "@/components/ui/sonner";
 import { RouteProgress } from "@/components/site/AppLoading";
+import { CustomSiteLoader } from "@/components/site/CustomSiteLoader";
+
+function isValidClerkPublishableKey(key: string | undefined | null): boolean {
+  if (!key || typeof key !== "string") return false;
+  const trimmed = key.trim();
+  if (
+    trimmed.includes("xxxx") ||
+    trimmed.includes("placeholder") ||
+    trimmed === "pk_test_" ||
+    trimmed === "pk_live_"
+  ) {
+    return false;
+  }
+  if (!/^(pk_test_|pk_live_)[a-zA-Z0-9+/_]+={0,2}\$$/.test(trimmed)) {
+    return false;
+  }
+  try {
+    const raw = trimmed.replace(/^(pk_test_|pk_live_)/, "").slice(0, -1);
+    const decoded =
+      typeof atob === "function" ? atob(raw) : Buffer.from(raw, "base64").toString("utf-8");
+    return decoded.length > 0 && decoded.includes(".");
+  } catch {
+    return false;
+  }
+}
 
 import appCss from "../styles.css?url";
 import { SiteLayout, ScreenContent } from "@/components/SiteLayout";
@@ -65,10 +90,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Fakhar Labs — Digital Experiences" },
-      { name: "description", content: "Fakhar Labs crafts high-performance websites for ambitious brands." },
+      {
+        name: "description",
+        content: "Fakhar Labs crafts high-performance websites for ambitious brands.",
+      },
       { name: "author", content: "Fakhar Labs" },
       { property: "og:title", content: "Fakhar Labs — Digital Experiences" },
-      { property: "og:description", content: "Fakhar Labs crafts high-performance websites for ambitious brands." },
+      {
+        property: "og:description",
+        content: "Fakhar Labs crafts high-performance websites for ambitious brands.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/og-image.png" },
       { property: "og:url", content: "https://fakharlabs.com" },
@@ -80,7 +111,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/logo.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/logo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -117,26 +150,18 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const clerkKey = import.meta.env["VITE_CLERK_PUBLISHABLE_KEY"];
 
-  if (!clerkKey) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background px-4 text-center">
-        <div className="max-w-md">
-          <h1 className="text-xl font-semibold tracking-tight text-foreground">Missing Clerk key</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Set VITE_CLERK_PUBLISHABLE_KEY in your environment to run this app.
-          </p>
-        </div>
-      </div>
-    );
+  const content = (
+    <QueryClientProvider client={queryClient}>
+      <CustomSiteLoader />
+      <Toaster />
+      <RouteProgress />
+      <Outlet />
+    </QueryClientProvider>
+  );
+
+  if (isValidClerkPublishableKey(clerkKey)) {
+    return <ClerkProvider publishableKey={clerkKey}>{content}</ClerkProvider>;
   }
 
-  return (
-    <ClerkProvider publishableKey={clerkKey}>
-      <QueryClientProvider client={queryClient}>
-        <Toaster />
-        <RouteProgress />
-        <Outlet />
-      </QueryClientProvider>
-    </ClerkProvider>
-  );
+  return content;
 }

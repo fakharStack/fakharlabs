@@ -8,6 +8,8 @@ import { EditorialRows } from "@/components/site/EditorialRows";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Faq } from "@/components/site/Faq";
+import { TestimonialSection } from "@/components/site/TestimonialSection";
+import { HeroShowcase } from "@/components/site/HeroShowcase";
 import { services, whatWeBuild, whyChooseUs, processSteps } from "@/data/site";
 import { projects } from "@/data/projects";
 
@@ -65,11 +67,7 @@ const pricingPreview = [
     price: "PKR 6,999",
     description: "A clean, professional website for a new or small business.",
     timeline: "1 week",
-    features: [
-      "Up to 4 pages",
-      "Mobile-first responsive build",
-      "SEO foundations",
-    ],
+    features: ["Up to 4 pages", "Mobile-first responsive build", "SEO foundations"],
   },
   {
     name: "Professional",
@@ -80,11 +78,7 @@ const pricingPreview = [
     description: "A polished business website built to support growth.",
     timeline: "1 week",
     popular: true,
-    features: [
-      "Up to 8 pages",
-      "Custom UI/UX",
-      "Performance optimisation",
-    ],
+    features: ["Up to 8 pages", "Custom UI/UX", "Performance optimisation"],
   },
   {
     name: "Business",
@@ -94,11 +88,7 @@ const pricingPreview = [
     oldPrice: "PKR 25,000",
     description: "A larger website with advanced features and integrations.",
     timeline: "1-2 weeks",
-    features: [
-      "Up to 15 pages",
-      "CMS & integrations",
-      "Advanced SEO",
-    ],
+    features: ["Up to 15 pages", "CMS & integrations", "Advanced SEO"],
   },
 ];
 
@@ -122,7 +112,10 @@ function Page() {
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         {/* HERO */}
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-8 md:pb-24 md:pt-40">
-          <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+          <div
+            className="hero-glow pointer-events-none absolute inset-0 -z-10"
+            aria-hidden="true"
+          />
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <Reveal>
               <p className="font-label-caps text-label-caps uppercase text-primary">
@@ -136,8 +129,8 @@ function Page() {
                 businesses.
               </h1>
               <p className="mt-6 max-w-xl font-body-md text-base text-on-surface-variant sm:text-lg">
-                Custom, mobile-first websites designed around your audience and engineered for speed,
-                clarity and conversion — then handed over in full to you.
+                Custom, mobile-first websites designed around your audience and engineered for
+                speed, clarity and conversion — then handed over in full to you.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link to="/contact" className="btn-primary min-h-12 !px-7 !py-3.5">
@@ -166,22 +159,8 @@ function Page() {
               </dl>
             </Reveal>
 
-            <Reveal delay={100}>
-              <div className="glass-card overflow-hidden rounded-3xl">
-                <div className="flex items-center gap-2 border-b border-white/40 bg-white/50 px-4 py-3">
-                  <span className="h-3 w-3 rounded-full bg-error/40" />
-                  <span className="h-3 w-3 rounded-full bg-primary/40" />
-                  <span className="h-3 w-3 rounded-full bg-secondary/40" />
-                </div>
-                <SmartImage
-                  src={projects[0]!.image}
-                  alt="Design mockup of a responsive clinic website built by Fakhar Labs"
-                  width={1280}
-                  height={960}
-                  eager
-                  wrapperClassName="aspect-[4/3] w-full"
-                />
-              </div>
+            <Reveal delay={100} className="relative flex items-center justify-center w-full">
+              <HeroShowcase />
             </Reveal>
           </div>
         </section>
@@ -243,11 +222,12 @@ function Page() {
                         <SmartImage
                           src={p.image}
                           alt={`${p.name} website design mockup`}
-                          width={1280}
-                          height={960}
-                          wrapperClassName="aspect-[4/3] w-full transition-all duration-500"
+                          width={1415}
+                          height={855}
+                          wrapperClassName="aspect-[16/10] w-full transition-all duration-500 bg-surface-container-high/40"
+                          className="object-cover object-top"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/30 to-transparent" />
                       </div>
                       <div className="flex grow flex-col p-6">
                         <span className="font-label-caps text-label-caps w-max rounded-full bg-primary-fixed/60 px-3 py-1 uppercase text-primary">
@@ -256,7 +236,9 @@ function Page() {
                         <h3 className="mt-4 font-headline-md text-lg font-bold text-on-background">
                           {p.name}
                         </h3>
-                        <p className="mt-2 grow font-body-md text-sm text-on-surface-variant">{p.short}</p>
+                        <p className="mt-2 grow font-body-md text-sm text-on-surface-variant">
+                          {p.short}
+                        </p>
                         <div className="mt-5 flex flex-wrap items-center gap-4">
                           <Link
                             to="/case-studies"
@@ -276,7 +258,9 @@ function Page() {
                               className="inline-flex min-h-11 items-center gap-2 font-body-md text-sm font-bold text-on-surface-variant hover:text-primary"
                             >
                               Live Project
-                              <span className="material-symbols-outlined text-base">open_in_new</span>
+                              <span className="material-symbols-outlined text-base">
+                                open_in_new
+                              </span>
                             </a>
                           )}
                         </div>
@@ -349,20 +333,22 @@ function Page() {
                 <Reveal key={p.name} delay={i * 80}>
                   <article className="page-enter h-full min-w-0">
                     <div
-                      className={`glass-card relative flex h-full flex-col rounded-[1.5rem] border border-outline-variant/40 p-6 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl sm:p-8 ${p.popular
+                      className={`glass-card relative flex h-full flex-col rounded-[1.5rem] border border-outline-variant/40 p-6 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl sm:p-8 ${
+                        p.popular
                           ? "plan-card-featured lg:-mt-4 lg:pb-10 hover:-translate-y-3"
                           : p.name === "Business"
                             ? "ring-1 ring-primary/25"
                             : ""
-                        }`}
+                      }`}
                     >
                       {/* Badges */}
                       <div className="flex min-h-[34px] flex-wrap items-center gap-2">
                         <span
-                          className={`font-label-caps text-label-caps rounded-full px-3 py-1.5 uppercase ${p.popular
+                          className={`font-label-caps text-label-caps rounded-full px-3 py-1.5 uppercase ${
+                            p.popular
                               ? "bg-primary text-on-primary"
                               : "border border-primary/30 text-primary"
-                            }`}
+                          }`}
                         >
                           {p.badge}
                         </span>
@@ -444,10 +430,9 @@ function Page() {
                       <Link
                         to="/pricing"
                         search={{ service: "development", currency: "PKR" }}
-                        className={`mt-6 min-h-12 w-full ${p.popular
-                            ? "btn-primary"
-                            : "btn-secondary text-on-surface"
-                          } !py-3 font-body-md font-medium`}
+                        className={`mt-6 min-h-12 w-full ${
+                          p.popular ? "btn-primary" : "btn-secondary text-on-surface"
+                        } !py-3 font-body-md font-medium`}
                       >
                         View package
                       </Link>
@@ -468,7 +453,6 @@ function Page() {
             </Reveal>
           </div>
         </section>
-
 
         {/* WHO WE WORK WITH */}
         <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
@@ -568,26 +552,30 @@ function Page() {
           <div className="mx-auto mt-7 w-full max-w-6xl px-5 sm:px-8 sm:mt-8">
             <Reveal>
               <p className="max-w-2xl font-body-md text-sm leading-relaxed text-on-surface-variant">
-                We publish delivered scope rather than borrowed statistics: no invented
-                testimonials, no unverifiable percentages. What you see on this site
-                is what we actually build.
+                We publish delivered scope and real project outcomes: verified client launches,
+                tangible business gains, and zero technical debt.
               </p>
             </Reveal>
           </div>
         </section>
+
+        {/* CLIENT TESTIMONIALS (PARALLEL DUAL MARQUEE) */}
+        <TestimonialSection />
 
         {/* MAINTENANCE */}
         <section className="mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8 md:pb-24 mt-16">
           <Reveal>
             <div className="glass-panel grid grid-cols-1 gap-8 rounded-3xl p-6 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-12">
               <div className="min-w-0">
-                <p className="font-label-caps text-label-caps uppercase text-primary">After launch</p>
+                <p className="font-label-caps text-label-caps uppercase text-primary">
+                  After launch
+                </p>
                 <h2 className="mt-3 font-headline-lg text-2xl leading-tight text-on-background sm:text-3xl">
                   A website is a product, not a delivery.
                 </h2>
                 <p className="mt-4 font-body-md text-sm text-on-surface-variant sm:text-base">
-                  Optional monthly care keeps the site secure, fast and current — cancel any time, and the
-                  code stays yours either way.
+                  Optional monthly care keeps the site secure, fast and current — cancel any time,
+                  and the code stays yours either way.
                 </p>
                 <Link
                   to="/pricing"
@@ -623,9 +611,16 @@ function Page() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="border-t border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24">
+        <section
+          id="faq"
+          className="border-t border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-24"
+        >
           <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
-            <SectionHeading eyebrow="FAQ" title="Questions we get asked before every project." align="center" />
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Questions we get asked before every project."
+              align="center"
+            />
             <Faq />
           </div>
         </section>
@@ -638,7 +633,8 @@ function Page() {
                 Ready to start your website?
               </h2>
               <p className="mx-auto mt-4 max-w-xl font-body-md text-sm text-on-surface-variant sm:text-base">
-                Tell us about your business and we'll come back with a clear plan, timeline and fixed price.
+                Tell us about your business and we'll come back with a clear plan, timeline and
+                fixed price.
               </p>
               <Link to="/contact" className="btn-primary mt-8 min-h-12 !px-8 !py-3.5">
                 Get Started
