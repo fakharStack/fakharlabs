@@ -317,7 +317,8 @@ export function HeroShowcase() {
                   <img
                     src={project.image}
                     alt={`${project.name} website preview`}
-                    loading={Math.abs(diff) <= 1 ? "eager" : "lazy"}
+                    loading="eager"
+                    decoding="async"
                     className="h-full w-full object-cover object-top transition-transform duration-700"
                   />
                   {/* Subtle soft tint overlay on inactive peek cards */}

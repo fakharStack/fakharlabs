@@ -27,9 +27,18 @@ const navItems = [
   { to: "/admin/settings", label: "Settings", icon: Settings },
 ] as const;
 
-export function AdminLayout({ title, breadcrumb, children }: { title: string; breadcrumb?: ReactNode; children: ReactNode }) {
+export function AdminLayout({
+  title,
+  breadcrumb,
+  children,
+}: {
+  title: string;
+  breadcrumb?: ReactNode;
+  children: ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   const { name, user, loading: sessionLoading, signOut } = useAdminSession();
+  const isDemo = user?.id === "demo-admin";
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -74,7 +83,14 @@ export function AdminLayout({ title, breadcrumb, children }: { title: string; br
         </span>
         <div>
           <p className="font-headline-md text-sm font-bold">Fakhar Labs</p>
-          <p className="text-xs text-inverse-on-surface/60">Admin</p>
+          <div className="flex items-center gap-1.5">
+            <p className="text-xs text-inverse-on-surface/60">Admin</p>
+            {isDemo && (
+              <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-300">
+                Demo Mode
+              </span>
+            )}
+          </div>
         </div>
       </div>
       <nav className="flex-1 space-y-1 px-3">
@@ -126,7 +142,7 @@ export function AdminLayout({ title, breadcrumb, children }: { title: string; br
     </div>
   );
 
-  if (sessionLoading || !user || (roleLoading && !isAdmin)) {
+  if (sessionLoading || !user || (!isDemo && roleLoading && !isAdmin)) {
     return (
       <div className="grid min-h-screen place-items-center bg-surface-container-low text-sm text-on-surface-variant">
         Checking your access…
@@ -134,7 +150,7 @@ export function AdminLayout({ title, breadcrumb, children }: { title: string; br
     );
   }
 
-  if (roleError || !isAdmin) {
+  if (!isDemo && (roleError || !isAdmin)) {
     return (
       <div className="grid min-h-screen place-items-center bg-surface-container-low px-4 text-center">
         <div className="max-w-sm">

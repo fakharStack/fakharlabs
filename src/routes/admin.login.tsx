@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { SignIn, useUser } from "@clerk/clerk-react";
+import { isClerkConfigured } from "../lib/clerk-key";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,
@@ -17,6 +18,40 @@ export const Route = createFileRoute("/admin/login")({
 });
 
 function LoginPage() {
+  if (!isClerkConfigured) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-surface-container-low px-4">
+        <div className="w-full max-w-sm rounded-xl border border-outline-variant/60 bg-surface p-6 text-center">
+          <Link
+            to="/"
+            className="mb-4 inline-flex items-center justify-center gap-2 font-headline-md text-lg font-extrabold"
+          >
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-black text-white">
+              A
+            </span>
+            Fakhar Labs
+          </Link>
+          <h2 className="mt-2 text-base font-semibold text-on-background">Admin Authentication</h2>
+          <p className="mt-2 text-xs text-on-surface-variant">
+            Set VITE_CLERK_PUBLISHABLE_KEY in your environment to enable real Clerk admin login.
+          </p>
+          <div className="mt-6 flex flex-col gap-2">
+            <Link to="/admin/dashboard" className="btn-primary w-full py-2 text-xs font-semibold">
+              Enter Admin Dashboard (Demo Mode)
+            </Link>
+            <Link to="/" className="btn-secondary w-full py-2 text-xs font-semibold">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <ClerkLoginForm />;
+}
+
+function ClerkLoginForm() {
   const { user, isLoaded, isSignedIn } = useUser();
   const navigate = useNavigate();
 
@@ -29,7 +64,9 @@ function LoginPage() {
   if (!isLoaded || isSignedIn) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-surface-container-low px-4">
-        <div className="grid min-h-40 place-items-center text-sm text-on-surface-variant">Loading…</div>
+        <div className="grid min-h-40 place-items-center text-sm text-on-surface-variant">
+          Loading…
+        </div>
       </div>
     );
   }
@@ -37,7 +74,10 @@ function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-surface-container-low px-4">
       <div className="w-full max-w-sm">
-        <Link to="/" className="mb-6 flex items-center justify-center gap-2 font-headline-md text-lg font-extrabold">
+        <Link
+          to="/"
+          className="mb-6 flex items-center justify-center gap-2 font-headline-md text-lg font-extrabold"
+        >
           <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-black text-white">
             A
           </span>

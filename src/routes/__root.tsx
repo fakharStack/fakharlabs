@@ -12,30 +12,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { Toaster } from "@/components/ui/sonner";
 import { RouteProgress } from "@/components/site/AppLoading";
 import { CustomSiteLoader } from "@/components/site/CustomSiteLoader";
-
-function isValidClerkPublishableKey(key: string | undefined | null): boolean {
-  if (!key || typeof key !== "string") return false;
-  const trimmed = key.trim();
-  if (
-    trimmed.includes("xxxx") ||
-    trimmed.includes("placeholder") ||
-    trimmed === "pk_test_" ||
-    trimmed === "pk_live_"
-  ) {
-    return false;
-  }
-  if (!/^(pk_test_|pk_live_)[a-zA-Z0-9+/_]+={0,2}\$$/.test(trimmed)) {
-    return false;
-  }
-  try {
-    const raw = trimmed.replace(/^(pk_test_|pk_live_)/, "").slice(0, -1);
-    const decoded =
-      typeof atob === "function" ? atob(raw) : Buffer.from(raw, "base64").toString("utf-8");
-    return decoded.length > 0 && decoded.includes(".");
-  } catch {
-    return false;
-  }
-}
+import { isValidClerkPublishableKey } from "@/lib/clerk-key";
 
 import appCss from "../styles.css?url";
 import { SiteLayout, ScreenContent } from "@/components/SiteLayout";
@@ -122,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block",
       },
     ],
   }),

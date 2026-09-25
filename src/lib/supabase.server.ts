@@ -1,13 +1,24 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "./supabase.types";
 
-function createAdminClient() {
+export function isSupabaseConfigured(): boolean {
   const url = process.env["SUPABASE_URL"];
   const key = process.env["SUPABASE_SERVICE_ROLE_KEY"];
-
-  if (!url || !key) {
-    throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variables");
+  if (!url || !key) return false;
+  if (
+    url.includes("YOUR-PROJECT-REF") ||
+    url.includes("placeholder") ||
+    key.includes("your-service-ro") ||
+    key.includes("placeholder")
+  ) {
+    return false;
   }
+  return true;
+}
+
+function createAdminClient() {
+  const url = process.env["SUPABASE_URL"] || "https://placeholder.supabase.co";
+  const key = process.env["SUPABASE_SERVICE_ROLE_KEY"] || "placeholder-key";
 
   return createClient<Database>(url, key, {
     auth: {
