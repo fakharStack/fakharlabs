@@ -77,6 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         property: "og:description",
         content: "Fakhar Labs crafts high-performance websites for ambitious brands.",
       },
+      { name :"google-site-verification",
+       content : "EQouEfetJgTEOsmtb_YpU57G7pBXyaBn1v-azCZi6z8" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/og-image.png" },
       { property: "og:url", content: "https://fakharlabs.com" },
