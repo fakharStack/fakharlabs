@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ContactForm } from "@/components/site/ContactForm";
-import { BreadcrumbSchema } from "@/components/site/JsonLd";
 import { Reveal } from "@/components/site/Reveal";
 import { WhatsAppLinkButton } from "@/components/site/WhatsAppButton";
 import {
@@ -26,13 +25,13 @@ export const Route = createFileRoute("/contact")({
   }),
   head: () => ({
     meta: [
-      { title: "Contact Web Developer Pakistan — Get a Quote | Fakhar Labs" },
+      { title: "Contact — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Contact a custom web developer in Pakistan. Get a free quote for your next website, web application, or booking system from Fakhar Labs.",
+          "Tell us about your project and we'll reply within 24 hours with a written quote. Message us by form or WhatsApp.",
       },
-      { property: "og:title", content: "Contact Fakhar Labs — Web Developer Pakistan" },
+      { property: "og:title", content: "Contact — Fakhar Labs" },
       {
         property: "og:description",
         content: "Share your project scope and get a written quote within 24 hours.",
@@ -52,27 +51,14 @@ function Page() {
   useEffect(() => {
     if (search.currency) storeCurrency(search.currency);
   }, [search.currency]);
-  
-  const breadcrumbs = [
-    { name: "Home", url: "https://fakharlabs.online/" },
-    { name: "Contact", url: "https://fakharlabs.online/contact" },
-  ];
 
   return (
     <SiteLayout>
-      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="mx-auto w-full max-w-6xl px-5 pb-24 pt-28 sm:px-8 md:pt-36">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
             <div className="min-w-0 lg:col-span-5">
               <Reveal>
-                {/* AEO / Answer-first block */}
-                <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
-                  <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
-                    Need to <strong>contact a web developer in Pakistan</strong>? Reach out to Fakhar Labs via email at <strong>fakharlabs@gmail.com</strong> or fill out the form below to get a free quote for your next custom website or web application project.
-                  </p>
-                </div>
-
                 <p className="font-label-caps text-label-caps uppercase text-primary">
                   Let's work together
                 </p>

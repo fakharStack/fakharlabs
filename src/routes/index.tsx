@@ -10,34 +10,25 @@ import { SmartImage } from "@/components/site/SmartImage";
 import { Faq } from "@/components/site/Faq";
 import { TestimonialSection } from "@/components/site/TestimonialSection";
 import { HeroShowcase } from "@/components/site/HeroShowcase";
-import { services, whatWeBuild, whyChooseUs, processSteps, faqs } from "@/data/site";
+import { services, whatWeBuild, whyChooseUs, processSteps } from "@/data/site";
 import { projects } from "@/data/projects";
-import { OrganizationSchema, FaqSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fakhar Labs — Web Development Agency in Pakistan" },
+      { title: "Fakhar Labs — Websites That Grow Businesses" },
       {
         name: "description",
         content:
-          "Fakhar Labs is a premium web development agency in Pakistan. We design and build custom, fast, mobile-first websites and booking systems for businesses.",
+          "Fakhar Labs designs and builds custom, fast, mobile-first websites for businesses — development, redesign, landing pages and maintenance.",
       },
-      { property: "og:title", content: "Fakhar Labs — Web Development Agency in Pakistan" },
+      { property: "og:title", content: "Fakhar Labs — Websites That Grow Businesses" },
       {
         property: "og:description",
         content: "Custom websites designed and built around your business, audience and goals.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      {
-        rel: "preload",
-        as: "image",
-        href: "/og-image.png", // Assuming this is used in the hero, adjust if needed
-        fetchpriority: "high",
-      },
     ],
   }),
   component: Page,
@@ -118,8 +109,6 @@ function Page() {
 
   return (
     <SiteLayout>
-      <OrganizationSchema />
-      <FaqSchema faqs={faqs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         {/* HERO */}
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-8 md:pb-24 md:pt-40">
@@ -129,18 +118,15 @@ function Page() {
           />
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <Reveal>
-              {/* AEO / Answer-first block */}
-              <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
-                <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
-                  <strong>Fakhar Labs</strong> is a custom web development agency in Pakistan. We build high-performance, mobile-first websites, booking systems, and Next.js web applications for clinics, gyms, schools, and small businesses.
-                </p>
-              </div>
-
               <p className="font-label-caps text-label-caps uppercase text-primary">
                 Digital experiences • built to grow
               </p>
               <h1 className="mt-4 font-display-xl-mobile text-4xl leading-[1.1] tracking-tight text-on-background sm:text-5xl lg:text-6xl">
-                The <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">web development agency</span> for growing businesses in Pakistan.
+                We build websites that{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  grow
+                </span>{" "}
+                businesses.
               </h1>
               <p className="mt-6 max-w-xl font-body-md text-base text-on-surface-variant sm:text-lg">
                 Custom, mobile-first websites designed around your audience and engineered for

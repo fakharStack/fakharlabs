@@ -20,7 +20,6 @@ import {
   type ServiceId,
 } from "@/data/pricing";
 import { readStoredCurrency, storeCurrency } from "@/hooks/useCurrencyPreference";
-import { BreadcrumbSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/pricing")({
   validateSearch: (
@@ -31,13 +30,13 @@ export const Route = createFileRoute("/pricing")({
   }),
   head: () => ({
     meta: [
-      { title: "Website Development Cost in Pakistan — Fakhar Labs Pricing" },
+      { title: "Pricing — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Find out the exact website development cost in Pakistan. We offer transparent pricing for custom web design, clinics, gyms, and business websites.",
+          "Starting prices for website development, redesigns, landing pages, web apps and maintenance — in PKR, USD or GBP, with a clear 25% advance payment model.",
       },
-      { property: "og:title", content: "Website Development Cost in Pakistan — Fakhar Labs" },
+      { property: "og:title", content: "Pricing — Fakhar Labs" },
       {
         property: "og:description",
         content:
@@ -74,15 +73,9 @@ function Page() {
   useEffect(() => {
     storeCurrency(currency);
   }, [currency]);
-  
-  const breadcrumbs = [
-    { name: "Home", url: "https://fakharlabs.online/" },
-    { name: "Pricing", url: "https://fakharlabs.online/pricing" },
-  ];
 
   return (
     <SiteLayout>
-      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <Hero currency={currency} onCurrency={(c) => select({ currency: c })} />
         <ServiceSelector active={active} onSelect={(id) => select({ service: id })} />
@@ -129,13 +122,6 @@ function Hero({
   return (
     <section className="mx-auto w-full max-w-6xl px-5 pb-6 pt-28 sm:px-8 md:pt-36">
       <Reveal>
-        {/* AEO / Answer-first block */}
-        <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
-          <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
-            If you are wondering about the <strong>website development cost in Pakistan</strong>, Fakhar Labs offers transparent pricing. Basic business websites start at <strong>PKR 6,999</strong>, Professional tier (up to 8 pages) starts at <strong>PKR 13,175</strong>, and Custom Web Applications start at <strong>PKR 46,750</strong>.
-          </p>
-        </div>
-
         <p className="font-label-caps text-label-caps uppercase text-primary">Pricing</p>
         <h1 className="mt-3 max-w-3xl font-headline-lg text-3xl leading-tight text-on-background sm:text-4xl md:text-5xl">
           Honest starting prices, quoted properly before we begin.
