@@ -3,20 +3,21 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { SmartImage } from "@/components/site/SmartImage";
 import { projects } from "@/data/projects";
+import { BreadcrumbSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case Studies — Web Design Projects in Detail | Fakhar Labs" },
+      { title: "Website Development Case Studies Pakistan — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Full case studies from Fakhar Labs: the brief, challenge, design direction, development detail and delivered outcome for each project.",
+          "Read our website development case studies in Pakistan. See how Fakhar Labs builds fast, custom websites and web applications from the ground up.",
       },
-      { property: "og:title", content: "Case Studies — Fakhar Labs" },
+      { property: "og:title", content: "Website Development Case Studies Pakistan — Fakhar Labs" },
       {
         property: "og:description",
-        content: "The brief, the build and what was delivered on each project.",
+        content: "Detailed deep dives into how we design and engineer projects.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,12 +36,25 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function Page() {
+  const breadcrumbs = [
+    { name: "Home", url: "https://fakharlabs.online/" },
+    { name: "Case Studies", url: "https://fakharlabs.online/case-studies" },
+  ];
+
   return (
     <SiteLayout>
+      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-10 pt-28 sm:px-8 md:pt-36">
           <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
           <Reveal>
+            {/* AEO / Answer-first block */}
+            <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
+              <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                Explore our <strong>website development case studies in Pakistan</strong>. Fakhar Labs documents the process of building high-performance websites, clinic booking platforms, and web applications from planning to launch.
+              </p>
+            </div>
+
             <p className="font-label-caps text-label-caps uppercase text-primary">Case studies</p>
             <h1 className="mt-3 max-w-3xl font-display-xl-mobile text-3xl leading-tight text-on-background sm:text-4xl md:text-5xl">
               The thinking behind the websites we ship.

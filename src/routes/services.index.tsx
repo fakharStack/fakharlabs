@@ -4,20 +4,21 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ExpandableGrid, type ExpandableCard } from "@/components/site/ExpandableGrid";
 import { services, processSteps } from "@/data/site";
+import { BreadcrumbSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Website Development, Redesign | Fakhar Labs" },
+      { title: "Website Development Services in Pakistan — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Website development, redesign, landing pages, maintenance and custom web solutions — what's included, who each service suits and how we deliver it.",
+          "Professional website development services in Pakistan. We offer custom web design, redesigns, landing pages, and maintenance for businesses.",
       },
-      { property: "og:title", content: "Services — Fakhar Labs" },
+      { property: "og:title", content: "Website Development Services in Pakistan — Fakhar Labs" },
       {
         property: "og:description",
-        content: "Six focused web services with clear scope, fit and process.",
+        content: "Professional website development services in Pakistan. We offer custom web design, redesigns, landing pages, and maintenance.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -88,12 +89,25 @@ const stepCards: ExpandableCard[] = processSteps.map((s, i) => ({
 }));
 
 function Page() {
+  const breadcrumbs = [
+    { name: "Home", url: "https://fakharlabs.online/" },
+    { name: "Services", url: "https://fakharlabs.online/services" },
+  ];
+
   return (
     <SiteLayout>
+      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-10 pt-28 sm:px-8 md:pt-36">
           <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
           <Reveal>
+            {/* AEO / Answer-first block */}
+            <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
+              <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                Fakhar Labs offers premium <strong>website development services in Pakistan</strong>. Our core services include custom web development, website redesigns, high-converting landing pages, e-commerce stores, and ongoing website maintenance.
+              </p>
+            </div>
+            
             <p className="font-label-caps text-label-caps uppercase text-primary">Services</p>
             <h1 className="mt-3 max-w-3xl font-display-xl-mobile text-3xl leading-tight text-on-background sm:text-4xl md:text-5xl">
               Websites built with intent — designed, engineered and looked after.

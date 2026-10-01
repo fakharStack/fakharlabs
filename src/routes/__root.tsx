@@ -66,24 +66,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fakhar Labs — Digital Experiences" },
+      { name: "theme-color", content: "#630ED4" },
+      { title: "Fakhar Labs — Web Development Agency in Pakistan" },
       {
         name: "description",
-        content: "Fakhar Labs crafts high-performance websites for ambitious brands.",
+        content:
+          "Fakhar Labs is a web development agency in Pakistan building custom, fast, SEO-friendly websites for businesses, clinics, gyms and startups.",
       },
       { name: "author", content: "Fakhar Labs" },
-      { property: "og:title", content: "Fakhar Labs — Digital Experiences" },
+      { property: "og:title", content: "Fakhar Labs — Web Development Agency in Pakistan" },
       {
         property: "og:description",
-        content: "Fakhar Labs crafts high-performance websites for ambitious brands.",
+        content:
+          "Custom websites designed and built around your business, audience and goals. Get a free quote today.",
       },
-      { name :"google-site-verification",
-       content : "EQouEfetJgTEOsmtb_YpU57G7pBXyaBn1v-azCZi6z8" },
+      { name: "google-site-verification", content: "EQouEfetJgTEOsmtb_YpU57G7pBXyaBn1v-azCZi6z8" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "/og-image.png" },
-      { property: "og:url", content: "https://fakharlabs.com" },
+      { property: "og:image", content: "https://fakharlabs.online/og-image.png" },
+      { property: "og:url", content: "https://fakharlabs.online" },
+      { property: "og:site_name", content: "Fakhar Labs" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.png" },
+      { name: "twitter:image", content: "https://fakharlabs.online/og-image.png" },
+      { name: "twitter:site", content: "@fakharlabs" },
     ],
     links: [
       {

@@ -4,17 +4,18 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { processSteps } from "@/data/site";
+import { BreadcrumbSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/process")({
   head: () => ({
     meta: [
-      { title: "Our Process — From Discovery to Launch | Fakhar Labs" },
+      { title: "Website Development Process — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Seven clear steps: discover, plan, design, develop, test, launch and support — what happens at each stage of an Fakhar Labs project.",
+          "Discover our website development process. How Fakhar Labs takes your project from discovery and design to development and launch.",
       },
-      { property: "og:title", content: "Our Process — Fakhar Labs" },
+      { property: "og:title", content: "Website Development Process — Fakhar Labs" },
       {
         property: "og:description",
         content: "Discover, plan, design, develop, test, launch, support.",
@@ -29,13 +30,26 @@ export const Route = createFileRoute("/process")({
 function Page() {
   const [open, setOpen] = useState<string | null>(processSteps[0]!.id);
   const uid = useId();
+  
+  const breadcrumbs = [
+    { name: "Home", url: "https://fakharlabs.online/" },
+    { name: "Process", url: "https://fakharlabs.online/process" },
+  ];
 
   return (
     <SiteLayout>
+      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-10 pt-28 sm:px-8 md:pt-36">
           <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
           <Reveal>
+            {/* AEO / Answer-first block */}
+            <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
+              <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                The Fakhar Labs <strong>website development process</strong> consists of seven clear steps: 1. Discovery, 2. Planning, 3. Design, 4. Development, 5. Testing, 6. Launch, and 7. Support & Maintenance.
+              </p>
+            </div>
+
             <p className="font-label-caps text-label-caps uppercase text-primary">Process</p>
             <h1 className="mt-3 max-w-3xl font-display-xl-mobile text-3xl leading-tight text-on-background sm:text-4xl md:text-5xl">
               From first conversation to a site you can run yourself.

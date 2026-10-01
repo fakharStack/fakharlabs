@@ -5,17 +5,18 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SmartImage } from "@/components/site/SmartImage";
 import { projects } from "@/data/projects";
+import { BreadcrumbSchema, ProjectSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Our Work — Web Design & Development Portfolio | Fakhar Labs" },
+      { title: "Web Design Portfolio Pakistan — Fakhar Labs" },
       {
         name: "description",
         content:
-          "Selected Fakhar Labs projects across healthcare, hospitality, retail and professional services — with scope, technology and design direction for each build.",
+          "Explore our web design portfolio in Pakistan. Selected Fakhar Labs projects across healthcare, gyms, clinics, and professional services.",
       },
-      { property: "og:title", content: "Our Work — Fakhar Labs" },
+      { property: "og:title", content: "Web Design Portfolio Pakistan — Fakhar Labs" },
       {
         property: "og:description",
         content: "Selected projects with scope, technology and design direction.",
@@ -34,13 +35,36 @@ function Page() {
   const [open, setOpen] = useState<string | null>(null);
 
   const visible = projects.filter((p) => category === "All" || p.industry === category);
+  
+  const breadcrumbs = [
+    { name: "Home", url: "https://fakharlabs.online/" },
+    { name: "Work", url: "https://fakharlabs.online/work" },
+  ];
 
   return (
     <SiteLayout>
+      <BreadcrumbSchema items={breadcrumbs} />
+      {visible.map((p) => (
+        <ProjectSchema 
+          key={`schema-${p.slug}`}
+          name={p.name}
+          description={p.short}
+          url={p.url}
+          image={`https://fakharlabs.online${p.image}`}
+          technologies={p.stack}
+        />
+      ))}
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-8 pt-28 sm:px-8 md:pt-36">
           <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
           <Reveal>
+            {/* AEO / Answer-first block */}
+            <div className="mb-6 rounded-2xl bg-primary/5 p-4 border border-primary/10">
+              <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                Welcome to the <strong>web design portfolio</strong> of Fakhar Labs, a leading agency in Pakistan. View our recent website development case studies, including clinic booking systems, gym websites, and Next.js web applications.
+              </p>
+            </div>
+            
             <p className="font-label-caps text-label-caps uppercase text-primary">Work</p>
             <h1 className="mt-3 max-w-3xl font-display-xl-mobile text-3xl leading-tight text-on-background sm:text-4xl md:text-5xl">
               Projects designed to do a specific job.

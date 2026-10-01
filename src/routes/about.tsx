@@ -4,17 +4,18 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ExpandableGrid, type ExpandableCard } from "@/components/site/ExpandableGrid";
 import { whyChooseUs } from "@/data/site";
+import { BreadcrumbSchema } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Fakhar Labs — How We Design and Build Websites" },
+      { title: "About Fakhar Labs — Web Development Agency in Pakistan" },
       {
         name: "description",
         content:
-          "Who we are, what we believe and how we work: a small web studio building custom, fast, accessible websites you fully own.",
+          "Who we are, what we believe and how we work: Fakhar Labs is a web development team in Pakistan building custom, fast, accessible websites.",
       },
-      { property: "og:title", content: "About — Fakhar Labs" },
+      { property: "og:title", content: "About Fakhar Labs Web Development Agency" },
       {
         property: "og:description",
         content: "A small web studio building custom, fast, accessible websites you fully own.",
@@ -61,8 +62,14 @@ const craft = [
 ];
 
 function Page() {
+  const breadcrumbs = [
+    { name: "Home", url: "https://fakharlabs.online/" },
+    { name: "About", url: "https://fakharlabs.online/about" },
+  ];
+
   return (
     <SiteLayout>
+      <BreadcrumbSchema items={breadcrumbs} />
       <main className="page-enter w-full max-w-full flex-grow overflow-x-hidden">
         <section className="relative mx-auto w-full max-w-6xl px-5 pb-10 pt-28 sm:px-8 md:pt-36">
           <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
@@ -143,6 +150,32 @@ function Page() {
               </Reveal>
             ))}
           </div>
+        </section>
+
+        {/* BRAND & E-E-A-T SECTION */}
+        <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 md:py-20">
+          <Reveal>
+            <div className="glass-card rounded-3xl p-7 sm:p-10 flex flex-col md:flex-row gap-10 items-center">
+              <div className="w-48 h-48 md:w-64 md:h-64 shrink-0 overflow-hidden bg-surface-variant/30 rounded-3xl p-6">
+                <img src="/logo.png" alt="Fakhar Labs Logo" className="w-full h-full object-contain filter drop-shadow-md" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <p className="font-label-caps text-label-caps uppercase text-primary">Who we are</p>
+                <h2 className="mt-2 font-headline-md text-2xl font-bold text-on-background sm:text-3xl">
+                  Fakhar Labs
+                </h2>
+                
+                <div className="mt-5 font-body-md text-sm text-on-surface-variant sm:text-base leading-relaxed">
+                  <p>
+                    Fakhar Labs is a web development studio that builds fast, modern, SEO-friendly websites for clinics, gyms, schools, and small businesses. We work with React, Next.js, and Tailwind CSS, and deliver full-stack features such as online appointment booking, WhatsApp booking, admin dashboards, and payment gateways.
+                  </p>
+                  <p className="mt-4">
+                    Every project is built mobile-first, tested for speed, and launched with on-page SEO already in place.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </section>
 
         <section className="border-y border-outline-variant/30 bg-surface-container-low/60 py-16 md:py-20">
