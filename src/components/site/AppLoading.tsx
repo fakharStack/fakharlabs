@@ -12,7 +12,7 @@ export function RouteProgress() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const isPending = useRouterState({
-    select: (s) => s.status === "pending" || s.isLoading || s.isTransitioning,
+    select: (s) => s.status === "pending" || s.isLoading,
   });
 
   if (!mounted || !isPending) return null;
